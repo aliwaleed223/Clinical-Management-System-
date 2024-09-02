@@ -1,0 +1,46 @@
+.RPL-Options {
+    font-family: 'inter';
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    font-size: 30px;
+    width: 270px;
+    height: 320px;
+    z-index: 2;
+    border: #ddd solid 2px;
+    border-radius: 10px;
+    background-color: #FEFEFE;
+    right: 0;
+    top: 80%;
+}
+
+.checkbox-container{
+    display: flex;
+    height: 30px;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+
+}
+.RPL-Options .checkbox-container input[type="checkbox"] {
+    appearance: none;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .RPL-Options .checkbox-container input[type="checkbox"]:checked::before {
+    content: '✔';
+    position: absolute;
+    top: -7px;
+    left: 4px;
+    color: black;
+    border-radius: 3px;
+  }

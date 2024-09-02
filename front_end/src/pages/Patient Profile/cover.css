@@ -1,0 +1,9 @@
+.add-cover {
+  background-image: url('../../images/patient-profile-wave.svg');
+  background-size: cover;
+}
+
+.scroll-bar {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}

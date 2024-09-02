@@ -1,0 +1,268 @@
+.Cardpage{
+    width: 1400px;
+}
+.Cardpage .info {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+
+}
+.Cardpage .info .header{
+display: flex;
+align-items: center;
+justify-content: center;
+    width: 100%;
+    border-bottom: black solid 4px;
+    padding-bottom: 10px;
+    color: #14B6DA;
+    
+}
+.inputinfo {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+justify-content: space-between;}
+
+
+
+
+
+.rightSection form {
+    display: flex;
+    flex-direction:column ;
+    gap: 20px;
+}
+.rightSection form input{
+    width: 600px;
+    height: 50px;
+text-align: end;
+padding-right: 10px;
+border-radius: 10px;
+border: #14B6DA solid 0.4px ;
+box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.329);
+}
+.rightSection form label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70;
+    height: 50;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.rightSection form  div{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+   gap: 20px;
+
+}
+
+/* .Determine_gender {
+    gap: 0px;
+    padding-right: 0;
+} */
+.Determine_gender label{
+    margin-left: 35px;
+}
+.Determine_gender .select{
+    width: 50px ;
+    border: none;
+    box-shadow: none;
+}
+.Determine_gender .name{
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.rightSection form  div .number_of_card{
+width: 490px;
+}
+
+.rightSection .buttons {
+    display: flex;
+    flex-direction: row;
+    /* align-items: start; */
+    justify-content:start ;
+    gap: 50px;
+    margin-left: 15px;
+  }
+  .buttons .save{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+    background-color: #14B6DA;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width:150px ;
+    height: 50px;
+   border-radius: 5px;
+   box-shadow: 1px 1px 1px 1px rgba(248, 247, 247, 0.329);
+  }
+  .buttons .makeQrCode{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    color: white;
+    background-color: #14B6DA;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width:150px ;
+    height: 50px;
+   border-radius: 5px;
+   box-shadow: 1px 1px 1px 1px rgba(248, 247, 247, 0.329);
+  }
+  .buttons .save p ,.buttons .makeQrCode p{
+    font-size: large;
+    font-weight: bold;
+  }
+  .buttons .save img{
+    height: 30px;
+
+  }
+
+
+.leftSection{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.leftSection input{
+    display: none;
+}
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #14B6DA;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width:150px ;
+    text-align: center;
+    
+  }
+
+  /* Hover effect */
+  .file-label:hover {
+    background-color: #44A4EC;
+  }
+
+  /* Display selected file name */
+  .file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: italic;
+  }
+ 
+
+
+
+  /* //////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+  .Cardpage .personalCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ 
+ }
+ .Cardpage .personalCard  .header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        width: 100%;
+        border-bottom: black solid 4px;
+        padding-bottom: 10px;
+        color: #14B6DA;
+        
+    }
+    .personalCard .card{
+        margin-top: 20px;
+        position: relative;
+    }
+    .personalCard .card img{
+        width: 900px;
+        height: 550px;
+        
+    }
+    .personalCard .card .informationCard{
+        position: absolute;
+        /* border: 2px black solid; */
+        right: 20px;
+        top: 250px;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: right; */
+        align-items: end;
+        gap: 20px;
+    }
+
+    .personalCard .card div p ,.personalCard .card div p span{
+        font-size: 28px;
+        font-weight: bold;
+        display: flex;
+    }
+
+.personalCard .card .imgSection img ,.personalCard .card .QRcode img {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    top: 100px;
+    left: 25px;
+}
+.personalCard .card .QRcode img{
+    top: 320px;
+    width: 160px;
+    height: 160px;
+    left: 40px;
+}
+
+
+.printButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    color: white;
+    background-color: #14B6DA;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width:150px ;
+    height: 50px;
+   border-radius: 5px;
+   box-shadow: 1px 1px 1px 1px rgba(248, 247, 247, 0.329);
+   margin: 10px;
+   gap: 10px;
+
+  }
+  .prinDiv .printButton span{
+    font-size: 20px;
+    font-weight: bold;
+  }
+ .prinDiv .printButton  img{
+    height: 30px;
+    width: 30px;
+  }

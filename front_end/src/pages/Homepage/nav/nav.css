@@ -1,0 +1,121 @@
+.hide {
+  display: none;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.nav .icon img {
+  width: 200px;
+  height: 200px;
+}
+.menu {
+  display: flex;
+  margin: 20px 0;
+}
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+.menu ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  width: 150px;
+  height: 40px;
+  background-color: rgba(20, 182, 218, 1);
+  border-radius: 10px;
+  color: white;
+}
+.menu ul li:hover {
+  background-color: white;
+  color: rgba(20, 182, 218, 1);
+}
+.nav .right-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav .right-menu img {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+.nav .list {
+  position: absolute;
+  width: 300px;
+  height: 700px;
+  background-color: rgba(225, 244, 244, 1);
+  right: 0;
+  margin-top: 130px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: solid #14b6da 1px;
+  border-radius: 10px;
+}
+.nav .list ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 38px;
+}
+
+.nav .list ul li {
+  font-size: large;
+  cursor: pointer;
+  display: flex;
+  gap: 30px;
+}
+.nav .list ul .header{
+    padding-top: 0; 
+}
+.nav .list ul  h1{
+    font-weight: bold;
+ margin-top: 20px;
+ font-size: 25px;
+ 
+}
+.nav .list ul li img{
+    width: 30px;
+    height: 30px;}
+    
+    .nav .list ul li p {
+        width: 70px;
+    }
+    
+ .nav .list ul li:hover{
+       scale: 1.3;
+       transition: 90ms;
+    }
+    .nav .list ul li .header:hover{
+        scale: 1 ;
+    }
+    
+
+.nav .list ul h1 {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 25px;
+}
+.nav .list ul li img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav .list ul li:hover {
+  scale: 1.3;
+  transition: 90ms;
+}
+.nav .list ul li .header:hover {
+  scale: 1;
+}

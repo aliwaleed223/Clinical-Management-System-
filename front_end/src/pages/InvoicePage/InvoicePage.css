@@ -1,0 +1,61 @@
+.InvoicePage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #B7EBF7;
+    font-family: "Amiri", serif;
+}
+
+.InvoicePage-header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    font-size: 72px;
+}
+
+.InvoicePage-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 79%;
+    height: 80px;
+    margin-top: 20px;
+    z-index: 2;
+}
+
+.InvoicePage-search input {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.InvoicePage-search input[type="date"] {
+    width: 200px;
+    text-indent: 10px;
+    font-size: 20px;
+}
+
+.InvoicePage-search input[type="text"] {
+    width: 300px;
+    direction: rtl;
+    text-indent: 10px;
+    font-size: 20px;
+}
+.Patient-select{
+    width: 180px;
+    direction: rtl;
+}
+.InvoicePage-search .select {
+    width: 200px;
+    direction: rtl;
+}
+
+@media screen and (max-width: 1600px) {
+    .InvoicePage-container .table-container{height: 400px;}
+    .InvoicePage-header{font-size: 50px;}
+}

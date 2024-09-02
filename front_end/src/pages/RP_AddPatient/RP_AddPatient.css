@@ -1,0 +1,202 @@
+.RP-container{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  background-color: #B7EBF7;
+  font-family: "Amiri", serif;
+  padding: 0 0 20px 0;
+} 
+.RP-header{
+  position: relative; 
+  display: flex;
+  width: 80%;
+  font-size: 75px;
+  align-items: center;
+  justify-content: center;
+}
+
+.RP-container form{
+  position: relative;
+  border-radius: 25px;
+  padding: 50px;
+  background-color: white;
+  max-width: 1120px;
+  height: 85%;
+  width:100%;
+  margin-top: 20px;
+  border: #d3d3d3 solid 1px;
+  overflow: hidden;
+}
+.RP-container form img{
+  position: absolute;
+}
+.wave1{
+  top: -40px;
+  left: -35px;
+} 
+.wave2{
+  top: -50px;
+  left: -50px;
+}
+.RP-container input {
+  background-color: #E1F4F4;
+  border: #d3d3d3 solid 1px; 
+}
+.patient-form {
+  display: grid;
+  gap: 10px 50px;
+  direction: rtl; 
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.large-input input,
+.small-input input,
+.small-input select,
+.notes-input {
+  width: 95%;
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 10px;
+  direction: rtl;
+  text-indent: 20px;
+  font-size: 24px;
+}
+.form-group label{
+  font-size: 30px;
+}
+.large-input {
+  width: 520px;
+}
+
+.small-input {
+  width: 250px;
+}
+
+.notes-input {
+  height: 100px;
+  background: repeating-linear-gradient(
+      #E1F4F4,
+      #E1F4F4 30px,
+      black 31px
+);
+line-height: 25px;
+padding: 10px;
+box-sizing: border-box;
+resize:both;
+max-height: 200px;
+max-width: 600px;
+border: #d3d3d3 solid 1px;
+}
+.submit-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: 45px;
+  background-color: #B7EBF7;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+.submit-button:hover{background-color: #a1cfda;}
+.patient-form select{
+  direction: ltr;
+  background-color: #E1F4F4;
+}
+textarea.notes-input{
+  background-color: #E1F4F4;
+  width: 40%;
+}
+#notes-input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  form .btn-add{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox-group{
+  position: relative;
+  margin-top: 30px;
+  width: 39%;
+  height: 70px;
+  font-size: 24px;
+  text-indent: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.checkbox-group input{
+  position: absolute;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  bottom: 25%;
+  cursor: pointer;
+  
+}
+.checkbox-group input::before{
+  content: "";
+  width: 25px;
+  height: 25px;
+}
+.checkbox-group input:checked::before{
+  background-color: #1292af;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 1600px) {
+  
+  .RP-header{font-size: 48px;}
+  .RP-container form{
+    max-width: 920px;
+    width:100%; padding:20px 50px;
+  }
+  .large-input input,
+  .small-input input,
+  .small-input select,
+  .notes-input{
+    font-size: 18px;
+    height: 35px;
+  }
+  .form-group label{
+    font-size: 20px;
+  }
+  .large-input {
+    width: 420px;
+  }
+  
+  .small-input {
+    width: 200px;
+  }
+  .checkbox-group{
+    font-size: 18px;
+    height: 50px;
+  }
+  .checkbox-group input::before{
+    width: 20px;
+    height: 20px;
+  }
+  .notes-input {
+    max-height: 80px;
+    max-width: 400px;
+  }
+  
+}
