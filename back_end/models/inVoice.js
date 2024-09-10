@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const invoiceItemSchema = new mongoose.Schema({
+  category: { 
+    type: String, 
+    required: true },
+    
   description: {
     type: String,
     required: true, 
