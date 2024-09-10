@@ -1,28 +1,45 @@
 import mongoose from 'mongoose';
 
-const { Schema } = mongoose;
+const invoiceItemSchema = new mongoose.Schema({
+  description: {
+    type: String,
+    required: true, 
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    default: 1,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  total: {
+    type: Number,
+    required: true,
+  }
+});
 
-
-const inVoiceSchema = new Schema({
-inVoivceDate :{
-type : Date,
-required : true
-},
-creationDate:{
+const invoiceSchema = new mongoose.Schema({
+  patientName: {
+    type: String,
+    required: true,
+  },
+  invoiceDate: {
     type: Date,
-    default: Date.now()
-},
-notes:{
-    type : String,
-    required:false
-},
-paymentMethod:{
-    type : String,
-    required:true
+    required: true,
+  },
+  issueDate: {
+    type: Date,
+    required: true,
+  },
+  notes: {
+    type: String,
+  },
+  items: {
+  type: [invoiceItemSchema],
+  required: true,
 }
+}, { timestamps: true });
 
-},
-    {timestamps:true});
-
-const inVoice = mongoose.model('inVoice', inVoiceSchema);
-export default inVoice;
+export default mongoose.model('Invoice', invoiceSchema);
