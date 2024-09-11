@@ -1,0 +1,37 @@
+[
+  {
+    "product": "Panadol",
+    "date": "26/08/2024",
+    "medicineCode": "00003",
+    "quantity": 5,
+    "status": "شارف على النفاذ"
+  },
+  {
+    "product": "Aprovel",
+    "date": "26/08/2024",
+    "medicineCode": "00004",
+    "quantity": null,
+    "status": "نفذ"
+  },
+  {
+    "product": "Anaprimne",
+    "date": "27/08/2024",
+    "medicineCode": "00005",
+    "quantity": 7,
+    "status": "شارف على النفاذ"
+  },
+  {
+    "product": "Anoxicam",
+    "date": "29/08/2024",
+    "medicineCode": "00006",
+    "quantity": 76,
+    "status": "متوفر"
+  },
+  {
+    "product": "Amigrawest",
+    "date": "29/08/2024",
+    "medicineCode": "00007",
+    "quantity": null,
+    "status": "نفذ"
+  }
+]
