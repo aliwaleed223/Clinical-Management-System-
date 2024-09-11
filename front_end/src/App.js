@@ -1,17 +1,18 @@
-
-
-import "./App.css";
-import Homepage from "../src/pages/Homepage/home";
-import RPL from "./pages/Receptionist-Patient-List/RpatientList";
-import RP_AddPatient from "./pages/RP_AddPatient/RP_AddPatient";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import InvoicePage from "./pages/InvoicePage/InvoicePage";
-import InvoicePageb from "./pages/InvoicePage_b/InvoicePage";
-import Reception from "./pages/Reception/Reception";
+import './App.css';
+import Homepage from '../src/pages/Homepage/home';
+import RPL from './pages/Receptionist-Patient-List/RpatientList';
+import RP_AddPatient from './pages/RP_AddPatient/RP_AddPatient';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import InvoicePage from './pages/InvoicePage/InvoicePage';
+import InvoicePageb from './pages/InvoicePage_b/InvoicePage';
+import Reception from './pages/Reception/Reception';
 import DoctorPage from './pages/Doctor/DoctorPage';
 import PatientProfile from './pages/Patient Profile/PatientProfile';
+import BillingReport from './pages/RecordsPage/BillingReports';
+import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
+import DrugStore from './pages/RecordsPage/DrugStore';
 
-import Cardpage from "./pages/Cardpage/Cardpage";
+import Cardpage from './pages/Cardpage/Cardpage';
 function App() {
   return (
     <div className="App mx-auto font-amiri">
@@ -27,12 +28,14 @@ function App() {
           <Route path="/doctor" element={<DoctorPage />} />
           <Route path="/patient-profile" element={<PatientProfile />} />
           <Route path="/cardpage" element={<Cardpage />} />
-
+          {/* to be changed */}
+          <Route path="/billing-report" element={<BillingReport />} />
+          <Route path="/follow-up" element={<FollowUpBilling />} />
+          <Route path="/drugstore" element={<DrugStore />} />
         </Routes>
       </Router>
     </div>
   );
-
 }
 
 export default App;
