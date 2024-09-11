@@ -135,14 +135,14 @@ width: 490px;
   }
 
 
-.leftSection{
+  .inputinfo .leftSection{
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 }
 
-.leftSection input{
+.inputinfo .leftSection input{
     display: none;
 }
 .file-label {
@@ -265,4 +265,26 @@ justify-content: center;
  .prinDiv .printButton  img{
     height: 30px;
     width: 30px;
+  }
+
+
+  @media print {
+    body{
+        visibility: hidden;
+      
+display: flex;
+justify-content: center;
+align-items: center;
+
+    }
+    .info{
+        height: 0px;
+    }
+    .card{
+        visibility: visible;
+        
+    }
+    .card .prinDiv{
+        display: none
+    } ;
   }

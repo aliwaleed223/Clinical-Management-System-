@@ -13,7 +13,7 @@ function body(params) {
       <div className="Departments flex flex-wrap">
      <Link to="/Reception" >  <Cart ImgLink={Reseption} Text={'موظف استقبال'} /></Link>
      <Link to="/doctor" >   <Cart ImgLink={Dector} Text={'طبيب'} /></Link>
-        <Cart ImgLink={Pharmacist} Text={'صيدلاني'} />
+        <Link  to="/PharmacrPage" ><Cart  ImgLink={Pharmacist} Text={'صيدلاني'} /></Link>
         <Link to="/Cardpage" >  <Cart ImgLink={Card} Text={'اصدار الهوية'} /></Link>
       </div>
     </div>
