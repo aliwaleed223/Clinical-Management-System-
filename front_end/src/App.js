@@ -11,9 +11,13 @@ import PatientProfile from './pages/Patient Profile/PatientProfile';
 import BillingReport from './pages/RecordsPage/BillingReports';
 import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
 import DrugStore from './pages/RecordsPage/DrugStore';
-
 import Cardpage from './pages/Cardpage/Cardpage';
+import DashBoard from './pages/Dashboard/Dashboard'
+
+
 function App() {
+
+
   return (
     <div className="App mx-auto font-amiri">
       <Router>
@@ -32,6 +36,7 @@ function App() {
           <Route path="/billing-report" element={<BillingReport />} />
           <Route path="/follow-up" element={<FollowUpBilling />} />
           <Route path="/drugstore" element={<DrugStore />} />
+          <Route path="/dashboard" element={<DashBoard />} />
         </Routes>
       </Router>
     </div>
