@@ -13,6 +13,8 @@ import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
 import DrugStore from './pages/RecordsPage/DrugStore';
 import Cardpage from './pages/Cardpage/Cardpage';
 import DashBoard from './pages/Dashboard/Dashboard'
+import Logs from './pages/LogsPage/Logs'
+
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
           <Route path="/follow-up" element={<FollowUpBilling />} />
           <Route path="/drugstore" element={<DrugStore />} />
           <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/logs" element={<Logs />} />
         </Routes>
       </Router>
     </div>
