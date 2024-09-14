@@ -175,6 +175,7 @@ textarea.notes-input{
   .notes-input{
     font-size: 18px;
     height: 35px;
+    z-index: 2;
   }
   .form-group label{
     font-size: 20px;
