@@ -156,7 +156,7 @@ getMe: async (req, res) => {
    
     const payload = JSON.parse(payloadJson);
     
-    res.status(200).json(payload);
+    return payload
 
   } catch (error) {
     console.log(error);
