@@ -26,8 +26,9 @@ function nav(params) {
             <ul>
               <li><Link to="/">
               مخزن الادويه </Link>  </li>
-              <li><Link to="/">
-              لوح التحكم</Link> </li>
+              <Link to="/DashBoard">
+              <li>
+              لوح التحكم </li></Link>
               <li><Link to="/">
               التقارير</Link>  </li>
               <li><Link to="/">

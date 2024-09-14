@@ -5,7 +5,8 @@ import save from '../../images/save-instagram 1.png'
 import card from '../../images/personalCard.png'
 import Qr from '../../images/image 1.png'
 import printlogo from '../../images/printer (1) 1.png'
-function Cardpage(params) {
+function Cardpage() {
+
 
   const [info, setinfo] = useState({ name: "", Birth: "", gender: "", number_of_card: "", img: "" });
   const handleValueChange = (field, newValue) => {
@@ -15,6 +16,11 @@ function Cardpage(params) {
     }));
   };
 
+
+
+
+
+
   const [fileName, setFileName] = useState('');
   const [imageSrc, setImageSrc] = useState(null);
 
@@ -23,7 +29,7 @@ function Cardpage(params) {
     if (file) {
       setFileName(file.name);
 
-      // Create a URL for the image to preview it
+    
       const reader = new FileReader();
       reader.onload = (e) => {
         setImageSrc(e.target.result);
@@ -34,7 +40,6 @@ function Cardpage(params) {
       setFileName('');
       setImageSrc(null);
     }
-
 
   };
 
@@ -49,7 +54,7 @@ function Cardpage(params) {
             <img src={addimg} alt="" />
             <input type="file" id="file-input" onChange={handleFileChange} accept="image/*" />
             <label for="file-input" class="file-label"  >اضاقة صورة</label>
-            {/* {imageSrc && <img src={imageSrc} alt={fileName} className="image-preview" />} */}
+           
 
           </div>
           <div className="rightSection">
@@ -110,7 +115,7 @@ function Cardpage(params) {
             <img src={Qr} alt="" />
           </div>
           <div className="prinDiv">
-            <button className="printButton" >
+            <button className="printButton" onClick={()=>{window.print()}}>
               <img src={printlogo} alt="" />
               <span>طباعة</span>
             </button>

@@ -15,7 +15,7 @@ import Cardpage from './pages/Cardpage/Cardpage';
 import DashBoard from './pages/Dashboard/Dashboard'
 import Logs from './pages/LogsPage/Logs'
 
-
+import Pharmacepage from './pages/pharmacePage/pharmacePage'
 
 function App() {
 
@@ -40,6 +40,7 @@ function App() {
           <Route path="/drugstore" element={<DrugStore />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/logs" element={<Logs />} />
+          <Route path="/pharmacepage" element={<Pharmacepage />} />
         </Routes>
       </Router>
     </div>
