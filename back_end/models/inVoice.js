@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
+import moment from 'moment'; 
 
 const invoiceItemSchema = new mongoose.Schema({
   category: { 
     type: String, 
-    required: true },
-    
+    required: true 
+  },
   description: {
     type: String,
     required: true, 
@@ -41,11 +42,21 @@ const invoiceSchema = new mongoose.Schema({
     type: String,
   },
   items: {
-  type: [invoiceItemSchema],
-  required: true,
-}
-}, { timestamps: true });
+    type: [invoiceItemSchema],
+    required: true,
+  }
+}, { timestamps: true });  
 
 
+invoiceSchema.methods.toJSON = function() {
+  const invoice = this.toObject();
+  
+
+  if (invoice.createdAt) {
+    invoice.createdAt = moment(invoice.createdAt).format('YYYY/M/D h.mmA');
+  }
+
+  return invoice;
+};
 
 export default mongoose.model('Invoice', invoiceSchema);
