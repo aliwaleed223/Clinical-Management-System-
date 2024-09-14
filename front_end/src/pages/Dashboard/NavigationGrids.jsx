@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import records from '../../images/Records.png';
-import employe_list from '../../images/group-employe.svg';
-import add_employe from '../../images/addemploy.svg';
-import reports from '../../images/dashboard-reports.svg';
+import employe_list from '../../images/emp_group.svg';
+import add_employe from '../../images/add_employee.svg';
+import reports from '../../images/dash_reports.svg';
 
 const NavigationGrids = () => {
   return (
