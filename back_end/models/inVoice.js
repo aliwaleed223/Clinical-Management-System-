@@ -53,7 +53,7 @@ invoiceSchema.methods.toJSON = function() {
   
 
   if (invoice.createdAt) {
-    invoice.createdAt = moment(invoice.createdAt).format('YYYY/M/D h.mmA');
+    invoice.createdAt = moment(invoice.createdAt).format('YYYY/M/D');
   }
 
   return invoice;
