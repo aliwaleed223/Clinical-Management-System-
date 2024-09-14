@@ -1,4 +1,6 @@
 import Invoice from '../models/inVoice.js';
+import logController from './logsController.js';
+
 
 const invController = {
 
@@ -7,9 +9,11 @@ const invController = {
     try {
       const newInvoice = new Invoice(req.body);
       await newInvoice.save();
-      res.status(201).send(newInvoice); // 201 Created for successful creation
+      res.status(201).send(newInvoice); 
+      await logController.saveInLogs(req, res, newInvoice._id , Invoice , 'أنشاء فاتورة')
+
     } catch (error) {
-      res.status(400).send(error); // 400 Bad Request for errors
+      res.status(400).send(error); 
     }
   },
 
@@ -17,7 +21,7 @@ const invController = {
   readAll: async (req, res) => {
     try {
       const allInvoices = await Invoice.find({});
-      res.status(200).send(allInvoices); // 200 OK for successful retrieval
+      res.status(200).send(allInvoices); 
     } catch (error) {
       res.status(400).send(error);
     }
@@ -28,7 +32,7 @@ const invController = {
     try {
       const getInvoice = await Invoice.findById(req.params.id);
       if (!getInvoice) {
-        return res.status(404).send(); // 404 Not Found if no invoice is found
+        return res.status(404).send(); 
       }
       res.status(200).send(getInvoice);
     } catch (error) {
@@ -44,8 +48,10 @@ const invController = {
         runValidators: true
       });
       if (!updatedInvoice) {
-        return res.status(404).send(); // 404 Not Found if invoice not found
+        return res.status(404).send(); 
       }
+      
+      await logController.saveInLogs(req, res, updatedInvoice._id , Invoice , 'أنشاء فاتورة')
       res.status(200).send(updatedInvoice); 
     } catch (error) {
       res.status(400).send(error);

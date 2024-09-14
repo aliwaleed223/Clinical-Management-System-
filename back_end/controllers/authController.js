@@ -3,6 +3,7 @@ import User from '../models/user.js';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import Blacklist from '../models/balcklist.js'
+import { ReturnDocument } from 'mongodb';
 
 
 dotenv.config();
@@ -156,7 +157,7 @@ getMe: async (req, res) => {
    
     const payload = JSON.parse(payloadJson);
     
-    res.status(200).json(payload);
+    return payload
 
   } catch (error) {
     console.log(error);
