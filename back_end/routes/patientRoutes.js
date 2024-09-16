@@ -3,6 +3,7 @@ import patientController from '../controllers/patientController.js';
 import multer from 'multer';
 import path from 'path';
 import authController from '../controllers/authController.js';
+import createQr from '../controllers/createQrController.js';
 
 
 const router = express.Router();
@@ -29,7 +30,7 @@ const upload = multer({ storage: storage });
 router.post('/patients', upload.single('picture'), patientController.createPatient);
 
 // Get the Qr image 
-router.get('/generateQR/:id', patientController.createQr);
+router.get('/generateQR/:id', createQr);
 
 // Read all patients
 router.get('/patients', patientController.readAllPatients);

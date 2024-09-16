@@ -9,7 +9,6 @@ const PatientSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female'],
     required: true,
   },
   age: {
@@ -39,7 +38,6 @@ const PatientSchema = new Schema({
   },
   diseaseType: {
     type: String,
-    enum: ['Chronic', 'Temporary'],
     required: true,
   },
   disease: {
