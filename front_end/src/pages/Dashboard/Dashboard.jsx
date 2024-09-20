@@ -24,20 +24,5 @@ const Dashboard = () => {
   );
 };
 
-// const bringData = async () => {
-//   const token =
-//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWhtZWQgamF3YWQiLCJpZCI6IjY2ZTM1OWYxMzg4NTBkMzBhZGYzNzc5YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzI2NzM0OTc3LCJleHAiOjE3MjY3NjM3Nzd9.aXsTElZXHiLRoA23lJ9GRRhK-cWHkE4-a7m79ktx5W8';
-//   const respone = await axios.get(
-//     'http://localhost:4000/api/patient/patients',
-//     {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     }
-//   );
-//   console.log(respone.data);
-// };
-
-// bringData();
 
 export default Dashboard;
