@@ -1,11 +1,13 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 import './RP_AddPatient.css';
 import Arrow from '../../images/arrow-right 1.png';
 import bluewave from '../../Assets/Waveimgs/Mask group.png';
 import bluewave2 from '../../Assets/Waveimgs/Mask group-1.png';
 import axios from "axios";
+import  {ClinicalContext}  from './../../pages/auth/contextFile';
 function RP_AddPatient(){
+  const {token} =useContext(ClinicalContext)
     const [formData, setFormData] = useState({
       name: '',
         gender: 'male',
@@ -36,7 +38,7 @@ function RP_AddPatient(){
 
 
       async function saveData() {
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWxpIHdhbGVlZCIsImlkIjoiNjZkY2E4YmI0ODM2MDc3OWIyYTE2NzlkIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjYyNzA5NzIsImV4cCI6MTcyNjI5OTc3Mn0.8WeTPUNcbEQ1IhmDSNWf8tWmYSHVcy12WpVekhjDEcQ`;
+        
     
         try {
           
@@ -47,11 +49,17 @@ function RP_AddPatient(){
             {
               headers: {
                 "Content-Type": "application/json",
-                Authorization: token,
+                Authorization:  `Bearer ${token}`,
               },
             }
           );
+          alert("تم اضافة المريض بنجاح ");
           console.log("Data saved successfully:", response.data);
+            // eslint-disable-next-line no-restricted-globals
+            location.reload();
+      
+
+
         } catch (error) {
           if (error.response) {
             console.error("Server Error:", error.response.data);

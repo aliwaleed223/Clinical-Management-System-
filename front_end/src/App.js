@@ -1,4 +1,6 @@
 import './App.css';
+import Login from './pages/Login/Login'
+// import Adduser from './pages/AddUser/AddUser'
 import Homepage from '../src/pages/Homepage/home';
 import RPL from './pages/Receptionist-Patient-List/RpatientList';
 import RP_AddPatient from './pages/RP_AddPatient/RP_AddPatient';
@@ -11,13 +13,20 @@ import PatientProfile from './pages/Patient Profile/PatientProfile';
 import Cardpage from './pages/Cardpage/Cardpage';
 // import Logs from './pages/LogsPage/Logs.jsx';
 import PharmacrPage from './pages/pharmacePage/pharmacePage'
-
+// import Login from './pages/Login/Login'
+// import Adduser from './pages/AddUser/AddUser'
+import Auth from './pages/auth/auth';
 
 function App() {
   return (
     <div className="App mx-auto font-amiri">
       <Router>
         <Routes>
+        {/* <Route path="/adduser" element={<Adduser />} /> */}
+        
+        <Route path="/Login" element={<Login />} /> 
+        
+        <Route element={<Auth />}>
         <Route path="/PharmacrPage" element={<PharmacrPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/Reception" element={<Reception />} />
@@ -29,6 +38,8 @@ function App() {
           <Route path="/patient-profile" element={<PatientProfile />} />
           <Route path="/cardpage" element={<Cardpage />} />
           {/* <Route path="/logs" element={<Logs />} /> */}
+          </Route>
+
         </Routes>
       </Router>
     </div>

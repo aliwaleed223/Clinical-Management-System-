@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import './InvoicePage.css';
 import arrow from '../../images/arrow-right 2.png';
 import { Link } from "react-router-dom";
 import plus from '../../images/image 46.png';
 import Lastsection from './lastsection';
 import axios from 'axios';
-
+import  {ClinicalContext}  from './../../pages/auth/contextFile';
 function Invoice() {
+  const {token} =useContext(ClinicalContext)
+
   const [handleResultFromLastSection, sethandleResultFromLastSection] = useState(null);
   const [values, setValues] = useState({ patientName: "", invoiceDate: "", issueDate: "", notes: "" });
   const [error, setError] = useState("");
@@ -23,7 +25,7 @@ function Invoice() {
   };
 
   async function saveData() {
-    const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWxpIHdhbGVlZCIsImlkIjoiNjZkY2E4YmI0ODM2MDc3OWIyYTE2NzlkIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjYxNzY2MzAsImV4cCI6MTcyNjIwNTQzMH0.v87voRWV0oeTjs8G3UQqzxOXwXI7MAwqkpyv5Qa5EeU`;
+   
 
     try {
       const mergedData = {
@@ -37,11 +39,14 @@ function Invoice() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: token,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       console.log("Data saved successfully:", response.data);
+      alert("تم اضافة الفاتورة بنجاح ");
+      // eslint-disable-next-line no-restricted-globals
+      location.reload()
     } catch (error) {
       if (error.response) {
         console.error("Server Error:", error.response.data);

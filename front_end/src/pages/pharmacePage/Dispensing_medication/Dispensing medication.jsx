@@ -25,7 +25,7 @@ function DispensingMedication() {
     
  
 <div className="info">
-<h1>
+<h1 className='pationtInfoHead'>
     معلومات المريض
     </h1>
     <form className='form' action="">

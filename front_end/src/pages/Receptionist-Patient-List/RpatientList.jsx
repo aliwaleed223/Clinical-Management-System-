@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import './RpatientList.css';
 import AddPatient from '../../images/addpatient.png';
 import trash from '../../images/trash.png';
@@ -7,8 +7,10 @@ import RPLoptions from '../../components/RPL-Options/RPLoptions';
 import arrow from '../../images/arrow-right 1.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import  {ClinicalContext}  from './../../pages/auth/contextFile';
 
 function RpatientList() {
+  const {token} =useContext(ClinicalContext)
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState({
     critical: false,
@@ -26,7 +28,7 @@ function RpatientList() {
         url:"http://localhost:4000/api/patient/patients",
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWxpIHdhbGVlZCIsImlkIjoiNjZkY2E4YmI0ODM2MDc3OWIyYTE2NzlkIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjYwNDQzOTQsImV4cCI6MTcyNjA3MzE5NH0.6bWSzgKA-JAiZ-cHeV89tiPdu46cjpSRN54UvfJAMdA`,
+          Authorization: `Bearer ${token}`,
         },
 
 
@@ -120,7 +122,7 @@ function RpatientList() {
             <div className='table-body'>
               {filteredPatients.map((patient, index) => (
                 <div className='row' key={index}>
-                  <p>{patient.status}</p>
+                  <p>مشترك</p>
                   <p>{patient.phone}</p>
                   <p>{patient.diseaseType}</p>
                   <p>{patient.age}</p>
