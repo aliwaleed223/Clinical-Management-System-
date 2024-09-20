@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import moment from 'moment';
 
 const logSchema = new mongoose.Schema({
+    ID  : {
+        type : String,
+        required : true
+    },
     role: {
         type: String,
         required: true

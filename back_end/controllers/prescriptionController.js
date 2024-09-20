@@ -9,7 +9,7 @@ const prescriptionController = {
       const newPrescription = new Prescription(req.body);
       await newPrescription.save();
       res.status(201).json(newPrescription); 
-      await logController.saveInLogs(req, res, newPrescription._id , Prescription , 'أضافة وصفة طبية')
+      await logController.saveInLogs(req, newPrescription._id , Prescription , 'أضافة وصفة طبية');
     } catch (error) {
       res.status(400).json({ message: error.message }); 
     }
@@ -52,7 +52,7 @@ const prescriptionController = {
       if (!updatedPrescription) {
         return res.status(404).json({ message: 'Prescription not found' }); 
       }
-      await logController.saveInLogs(req, res, updatedPrescription._id , Prescription , 'أضافة وصفة طبية')
+      await logController.updateLogs( updatedPrescription._id , Prescription )
       res.status(200).json(updatedPrescription); 
     } catch (error) {
       res.status(400).json({ message: error.message });

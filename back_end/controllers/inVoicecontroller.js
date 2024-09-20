@@ -10,7 +10,7 @@ const invController = {
       const newInvoice = new Invoice(req.body);
       await newInvoice.save();
       res.status(201).send(newInvoice); 
-      await logController.saveInLogs(req, res, newInvoice._id , Invoice , 'أنشاء فاتورة')
+      await logController.saveInLogs(req, newInvoice._id , Invoice , 'أنشاء فاتورة');
 
     } catch (error) {
       res.status(400).send(error); 
@@ -51,7 +51,7 @@ const invController = {
         return res.status(404).send(); 
       }
       
-      await logController.saveInLogs(req, res, updatedInvoice._id , Invoice , 'أنشاء فاتورة')
+      await logController.updateLogs( updatedInvoice._id , Invoice );
       res.status(200).send(updatedInvoice); 
     } catch (error) {
       res.status(400).send(error);
