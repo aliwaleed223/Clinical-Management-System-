@@ -1,0 +1,58 @@
+.pharmacepage .forlist {
+    all: unset;
+    width: 100%;
+  /* background-color: aliceblue; */
+   
+    height: 600px;
+    margin-top: 20px;
+    overflow-y:scroll;
+ 
+}
+
+.head { 
+    display: flex;
+    justify-content: space-between;
+
+}
+ 
+.listofmedication .head .left,.listofmedication .head .right{
+    color :#878787;
+    display: flex;
+    gap: 83px;
+    margin: 20px  20px;
+}
+.listofmedication .head .left p,.listofmedication .head .right p{
+    font-size: 30px;
+}
+
+.Item{
+    padding: 15px;
+    border: #878787 solid 1px;
+    background-color: #ffff;
+    margin-bottom: 20px;
+}
+.L-section,.R-section{
+    
+    display: flex;
+    font-size: 25px;
+    /* gap: 83px; */
+}
+
+.R-section{
+    gap: 55px;
+}
+
+.L-section{
+    gap:80px;
+}
+.L-section .quantity img{
+width: 25px;
+height: 25px;
+cursor: pointer;
+}
+.quantity {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

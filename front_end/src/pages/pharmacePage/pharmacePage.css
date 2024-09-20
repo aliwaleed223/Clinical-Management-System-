@@ -1,0 +1,93 @@
+/* ///////////////////////////// */
+.border{
+    border: 1px solid black;
+    
+}
+
+
+input {
+    text-align: end;
+    padding-right: 10px;
+}
+/* ///////////////////////////////// */
+
+
+
+
+
+
+body {
+    background-color: #B7EBF7;
+}
+
+/* .pharmacepage{
+    display: flex;
+    flex-direction:column ;
+    
+} */
+.pharmacepage .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px 20px ;
+}
+.header h1 {
+    font-size: 40px;
+    font-weight: 900;
+}
+.header img{
+    cursor: pointer;
+}
+.upDiv{
+    /* margin-top: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.bodySection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 90%;
+   gap: 50px;
+}
+.pharmacepage .rightsection{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 110px;
+margin-right:40px ;
+border-left: black 2px solid ;
+padding: 120px 20px ;
+}
+.pharmacepage .rightsection button{
+    width: 200px;
+    height: 50px;
+    background-color:#14B6DA ;
+    border: 0.9px solid white;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.pharmacepage .leftSection{
+    background-color: #FFFFFF ;
+    border-radius: 10px;
+    border: 1.2px solid #14B6DA ;
+    box-shadow: 1px 1px 1px 1px rgba(6, 6, 6, 0.171);
+    text-align: end;
+    padding-right: 10px;
+
+   
+}
+
+
+.colorForButton{
+    background-color: #FFFFFF !important;
+    color: #14B6DA !important;
+}

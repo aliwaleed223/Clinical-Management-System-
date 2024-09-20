@@ -2,7 +2,6 @@ import DashBoardHeader from './DashBoardHeader';
 import NavigationGrids from './NavigationGrids';
 import Statistics from './Statistics';
 import Welcome from './Welcome';
-import axios from 'axios';
 
 const Dashboard = () => {
   return (

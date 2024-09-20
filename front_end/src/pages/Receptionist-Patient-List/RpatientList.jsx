@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import './RpatientList.css';
 import AddPatient from '../../images/addpatient.png';
 import trash from '../../images/trash.png';
@@ -6,8 +6,11 @@ import options from '../../images/options.png';
 import RPLoptions from '../../components/RPL-Options/RPLoptions';
 import arrow from '../../images/arrow-right 1.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import  {ClinicalContext}  from './../../pages/auth/contextFile';
 
 function RpatientList() {
+  const {token} =useContext(ClinicalContext)
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState({
     critical: false,
@@ -17,16 +20,40 @@ function RpatientList() {
     surgeries: false,
     followUp: false
   });
+  const [allPatients, setAllPatients] = useState([]);
+  async function getAllpatient  (){
+   try{ const r=  await axios({
+        method:"get",
+        // data:"data",
+        url:"http://localhost:4000/api/patient/patients",
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
 
-  const patients = [
-    { status: 'مشترك', phone: '0123456789', diagnosis: 'سكر', age: '55', name: 'محمد' },
-    { status: 'مشترك', phone: '0123456789', diagnosis: 'سكر', age: '55', name: 'فاطمة' },
-    { status: 'مشترك', phone: '0123456789', diagnosis: 'سكر', age: '55', name: 'عبدالعزيز محمد' },
-    { status: 'مشترك', phone: '0123456789', diagnosis: 'سكر', age: '55', name: 'باسل' },
-    { status: 'مشترك', phone: '0123456789', diagnosis: 'سكر', age: '55', name: 'سلام' },
-    { status: 'بدون اشتراك', phone: '0123456789', diagnosis: 'ضغط', age: '25', name: 'محمد' },
-  ];
 
+      });
+    setAllPatients(r.data)
+      console.log(allPatients)
+   }
+   catch (error) {
+    if (error.response) {
+      console.error("Error response data:", error.response.data);
+      console.error("Error response status:", error.response.status);
+      console.error("Error response headers:", error.response.headers);
+    } else if (error.request) {
+      console.error("Error request:", error.request);
+    } else {
+      console.error("Error message:", error.message);
+    }
+
+  }
+  }
+  useEffect(() => {
+    getAllpatient();
+  }, []);
+
+  
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
@@ -38,7 +65,7 @@ function RpatientList() {
     });
   };
 
-  const filteredPatients = patients.filter(patient => {
+  const filteredPatients = allPatients.filter(patient => {
     const matchesSearch = Object.values(patient).some(value =>
       value.toString().toLowerCase().includes(search.toLowerCase())
     );
@@ -95,9 +122,9 @@ function RpatientList() {
             <div className='table-body'>
               {filteredPatients.map((patient, index) => (
                 <div className='row' key={index}>
-                  <p>{patient.status}</p>
+                  <p>مشترك</p>
                   <p>{patient.phone}</p>
-                  <p>{patient.diagnosis}</p>
+                  <p>{patient.diseaseType}</p>
                   <p>{patient.age}</p>
                   <p>{patient.name}</p>
                 </div>
