@@ -2,8 +2,11 @@ import FilterAndSelect from './FilterAndSelect';
 import LogBar from './LogBar';
 import LogsHeader from './LogsHeader';
 import TableBar from './TableBar';
+import axios from 'axios';
 // fake data
 import logsData from './fake_logs';
+import { useEffect, useState } from 'react';
+import { async } from 'q';
 
 const groupLogsByDate = (logs) => {
   return logs.reduce((acc, log) => {
@@ -17,7 +20,35 @@ const groupLogsByDate = (logs) => {
 };
 
 const Logs = () => {
+  const [logsData, setLogsData] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      //TODO: token to be used differently
+      const token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWhtZWQgamF3YWQiLCJpZCI6IjY2ZTM1OWYxMzg4NTBkMzBhZGYzNzc5YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzI2NzM0OTc3LCJleHAiOjE3MjY3NjM3Nzd9.aXsTElZXHiLRoA23lJ9GRRhK-cWHkE4-a7m79ktx5W8';
+
+      try {
+        const respone = await axios.get(
+          'http://localhost:4000/api/logs/allLogs',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // Setting the logs data
+        const slicedData = respone.data.slice(0, 15);
+        setLogsData(slicedData);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+
   const groupedLogs = groupLogsByDate(logsData);
+  // console.log(groupedLogs);
 
   return (
     <div className="bg-red- w-[95%] m-auto h-screen">
