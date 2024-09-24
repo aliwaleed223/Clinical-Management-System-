@@ -3,9 +3,9 @@ import LogBar from './LogBar';
 import LogsHeader from './LogsHeader';
 import TableBar from './TableBar';
 import axios from 'axios';
-// fake data
 import logsData from './fake_logs';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext} from 'react';
+import { ClinicalContext } from '../auth/contextFile';
 import { async } from 'q';
 
 const groupLogsByDate = (logs) => {
@@ -20,14 +20,11 @@ const groupLogsByDate = (logs) => {
 };
 
 const Logs = () => {
+  const { token } = useContext(ClinicalContext);
   const [logsData, setLogsData] = useState([]);
 
   useEffect(() => {
     (async () => {
-      //TODO: token to be used differently
-      const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWhtZWQgamF3YWQiLCJpZCI6IjY2ZTM1OWYxMzg4NTBkMzBhZGYzNzc5YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzI2NzM0OTc3LCJleHAiOjE3MjY3NjM3Nzd9.aXsTElZXHiLRoA23lJ9GRRhK-cWHkE4-a7m79ktx5W8';
-
       try {
         const respone = await axios.get(
           'http://localhost:4000/api/logs/allLogs',
@@ -40,6 +37,7 @@ const Logs = () => {
 
         // Setting the logs data
         const slicedData = respone.data.slice(0, 15);
+        console.log(slicedData);
         setLogsData(slicedData);
       } catch (err) {
         console.log(err);

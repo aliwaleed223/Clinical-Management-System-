@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { async } from 'q';
-import { useEffect, useState } from 'react';
-import token from '../../token';
+import { useContext, useEffect, useState } from 'react';
+import { ClinicalContext } from '../auth/contextFile';
+import StatsGrid from './StatsGrid'
+// import token from '../../token';
 
 const Stats = () => {
-  // TODO: change the token.
+  const { token } = useContext(ClinicalContext);
   const [numberOfPatients, setNumberOfPatients] = useState(0);
   const [numberOfEmployees, setNumberOfEmployees] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -70,39 +72,6 @@ const Stats = () => {
   );
 };
 
-const StatsGrid = ({ statsGridText, statsValue, isLoading }) => {
-  return (
-    <div className="bg-white p-10 border border-black rounded-lg ">
-      <h3 className="text-right text-[#079CEE] text-2xl font-bold">
-        {statsGridText}
-      </h3>
-      {isLoading ? '' : <IncreasingNumber number={statsValue} />}
-    </div>
-  );
-};
 
-const IncreasingNumber = ({ number }) => {
-  const [increasingValue, setIncreasingValue] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIncreasingValue((prevValue) => {
-        if (prevValue < number) return prevValue + 1;
-        else {
-          clearInterval(interval);
-          return prevValue;
-        }
-      });
-    }, 10); // Change the interval duration here (e.g., 100ms)
-
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, []);
-
-  return (
-    <div>
-      <p className="text-xl font-extrabold mt-2">{increasingValue}</p>
-    </div>
-  );
-};
 
 export default Stats;
