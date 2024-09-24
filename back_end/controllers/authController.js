@@ -143,10 +143,13 @@ deleteUser:async(req,res,next)=>{
  }
 },
 
-getMe: async (req, res) => {
+getDecodedToken : async (req) => {
   try {
     const authHeader = req.headers['authorization'];
- 
+
+    if (!authHeader) {
+      return res.status(401).send('Authorization header missing');
+    }
     const splitToken = authHeader.split(' ')[1];
 
     // The payload is the second part (index 1)
@@ -155,41 +158,55 @@ getMe: async (req, res) => {
     const payloadJson = Buffer.from(payloadBase64, 'base64').toString('utf-8');
    
     const payload = JSON.parse(payloadJson);
-    
-    res.status(200).json(payload);
+
+    return payload
 
   } catch (error) {
+
     console.log(error);
+
     res.status(400).send('Error');
   }
 },
 
-protected : async (req , res ,next) => {
+getMe: (req, res) => {
+  try {
+    const payload = getDecodedToken(req);
+    return res.status(200).json(payload);  
+  } catch (error) {
+    res.status(400).send('Error');
+  }
+},
 
-  try{
-    const authHeader =req.headers['authorization'];
 
-    if (!authHeader){
-      return  res.status(400).json({"msg":"You Are Not Authintacted !"});
+protected: async (req, res, next) => {
+  try {
+    const authHeader = req.headers['authorization'];
+
+    if (!authHeader) {
+      return res.status(400).json({ "msg": "You Are Not Authenticated!" });
     }
 
     const splitToken = authHeader.split(' ')[1];
 
-    jwt.verify(splitToken, secretKey, (err, user) => {
+    jwt.verify(splitToken, secretKey, async (err, user) => {
       if (err) {
-         return res.status(403).json({ "msg": "Token is not valid!" });
+        return res.status(403).json({ "msg": "Token is not valid!" });
       }
-        next();
-    } )
 
-  }
-  
-  catch (err){
-   console.log(err);
-   res.status(400).json('Error ');
+      req.user = await User.findById(user.id).select('-password');
+      if (!req.user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      next();
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json('Error');
   }
 }
-
 
 };
 
