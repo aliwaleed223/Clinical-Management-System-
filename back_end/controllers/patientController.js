@@ -23,20 +23,21 @@ const patientController = {
   // Create a new patient
   createPatient: async (req, res) => {
     try {
-        const { name, age, phone, description, medicine, cardNumber, gender, address, historicalSurgeries, memberShip } = req.body;
+        const { name, age, phone, gender, address, registrationDate , idNumber, email, disease, diseaseType, notes} = req.body;
         const picturePath = req.file ? req.file.path : null;
 
         const newPatient = new Patient({
             name,
             age,
             phone,
-            description,
-            medicine,
-            cardNumber,
+            registrationDate,
+            idNumber,
             gender,
             address,
-            historicalSurgeries,
-            memberShip,
+            email,
+            disease,
+            diseaseType,
+            notes,
             picture: picturePath
         });
 
