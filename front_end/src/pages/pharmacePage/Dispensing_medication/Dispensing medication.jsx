@@ -7,10 +7,10 @@ import Print from '../../../images/printer (1) 1.png'
 
 function DispensingMedication() {
     const [rows, setRows] = useState([
-        { instructions: '', duration: '', frequency: '', dosage: '', name: '' }
+        { instructions: '', duration: '', frequency: '', dosage: '', name: '' ,FormOfTheMedication:''}
       ]);
       const addRow = () => {
-        setRows([...rows, { instructions: '', duration: '', frequency: '', dosage: '', name: '' }]);
+        setRows([...rows, { instructions: '', duration: '', frequency: '', dosage: '', name: '',FormOfTheMedication:'' }]);
       };    
 
       function handleInputChange(e, index, field) {
@@ -63,16 +63,20 @@ function DispensingMedication() {
     <th >التعليمات</th>
     <th >مدة العلاج</th>
     <th>التكرار</th>
+    <th>شكل الدواء</th>
     <th>الجرعة</th>
     <th>اسم الدواء</th>
+  
   </tr>
   {rows.map((row, index) => (
               <tr key={index}>
                 <td><input type="text" value={row.instructions} onChange={(e) => handleInputChange(e, index, 'instructions')} /></td>
                 <td><input type="text" value={row.duration} onChange={(e) => handleInputChange(e, index, 'duration')} /></td>
                 <td><input type="text" value={row.frequency} onChange={(e) => handleInputChange(e, index, 'frequency')} /></td>
+                <td><input type="text" value={row.FormOfTheMedication} onChange={(e) => handleInputChange(e, index, 'FormOfTheMedication')} /></td>
                 <td><input type="text" value={row.dosage} onChange={(e) => handleInputChange(e, index, 'dosage')} /></td>
                 <td><input type="text" value={row.name} onChange={(e) => handleInputChange(e, index, 'name')} /></td>
+
               </tr>
             ))}
     </table>

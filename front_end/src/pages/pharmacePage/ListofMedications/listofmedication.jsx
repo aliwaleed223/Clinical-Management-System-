@@ -6,7 +6,53 @@ import './listofmedication.css'
 
 function listofmedication (params) {
     
-
+    const data = {
+        items: [
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          },
+          {
+            "quantity": 70,
+            "dosage": "500 ml",
+            "description": "يقلل الكوليسترول ويحسن صحة القلب",
+            "medication": "Simvastatin"
+          }
+        ]
+      }
+      
 
 
 
@@ -26,128 +72,21 @@ function listofmedication (params) {
 </div>
             </div>
             
-            <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
+            {data.items.map((item, index) => (
+        <div key={index} className='head Item'>
+          <div className='L-section'>
+            <div className='quantity'>
+              
+              <p>{item.quantity}</p>
             </div>
-
-            <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>
-
-            <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>    <div className='head Item'>
-                <div className='L-section' >
-                <div className='quantity' >
-                <img className='plus' src={Plus} alt="" />
-                <img className='minus' src={Minus} alt="" />
-                <p>70</p>
-                </div>
-                <p className='dosage'> 500 ml </p>
-                </div>
- <div className='R-section'>
-                <p className='description'>يقلل الكوليسترول ويحسن صحة القلب</p>
-<p className='medication' > Simvastatin</p>
-</div>
-            </div>
+            <p className='dosage'>{item.dosage}</p>
+          </div>
+          <div className='R-section'>
+            <p className='description'>{item.description}</p>
+            <p className='medication'>{item.medication}</p>
+          </div>
+        </div>
+      ))}
             
             </div>
 

@@ -180,9 +180,9 @@ function RP_AddPatient(){
             name="condition"
             checked={formData.diseaseType === 'مرض عارض'}
               
-              onChange={(e)=>{handleChange('diseaseType','مرض عارض')}}
+              onChange={(e)=>{handleChange('diseaseType','مرض عام')}}
             />
-            مرض عارض
+            مرض عام
           </label>
         </div>
       </div>

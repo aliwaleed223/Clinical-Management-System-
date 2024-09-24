@@ -20,12 +20,13 @@ import Auth from './pages/auth/auth';
 function App() {
   return (
     <div className="App mx-auto font-amiri">
+       
       <Router>
         <Routes>
         {/* <Route path="/adduser" element={<Adduser />} /> */}
         
         <Route path="/Login" element={<Login />} /> 
-        
+      
         <Route element={<Auth />}>
         <Route path="/PharmacrPage" element={<PharmacrPage />} />
           <Route path="/" element={<Homepage />} />

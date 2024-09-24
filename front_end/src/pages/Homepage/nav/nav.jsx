@@ -34,7 +34,9 @@ function nav(params) {
               السجلات</Link> </li>
             </ul>
           </div>
-        <List />
+        {/* <List /> */}
+        {/* hide list after edit this page and add empty div */}
+        <div></div>
         </div>
       );
     }
