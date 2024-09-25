@@ -59,18 +59,20 @@ const prescriptionController = {
     }
   },
 
-  // Delete Prescription
-  deletePrescription: async (req, res) => {
-    try {
-      const deletedPrescription = await Prescription.findByIdAndDelete(req.params.id);
-      if (!deletedPrescription) {
-        return res.status(404).json({ message: 'Prescription not found' });
+    // Delete Prescription
+    deletePrescription: async (req, res) => {
+      try {
+        const preId = req.params.id;
+        await logController.saveInLogs(req, preId , Prescription , 'الغاء وصفة');
+        const deletedPrescription = await Prescription.findByIdAndDelete(req.params.id);
+        if (!deletedPrescription) {
+          return res.status(404).json({ message: 'Prescription not found' });
+        }
+        res.status(200).json(deletedPrescription); 
+      } catch (error) {
+        res.status(400).json({ message: error.message });
       }
-      res.status(200).json(deletedPrescription); 
-    } catch (error) {
-      res.status(400).json({ message: error.message });
     }
-  }
-};
+  };
 
 export default prescriptionController;

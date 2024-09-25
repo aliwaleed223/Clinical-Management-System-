@@ -9,8 +9,8 @@ const invController = {
     try {
       const newInvoice = new Invoice(req.body);
       await newInvoice.save();
-      res.status(201).send(newInvoice); 
       await logController.saveInLogs(req, newInvoice._id , Invoice , 'أنشاء فاتورة');
+      res.status(201).send(newInvoice); 
 
     } catch (error) {
       res.status(400).send(error); 
@@ -61,6 +61,9 @@ const invController = {
   // Delete Invoice
   deleteInvoice: async (req, res) => {
     try {
+      const invoiceId = req.params.id;
+      await logController.saveInLogs(req, invoiceId , Invoice , 'حذف فاتورة');
+      
       const deletedInvoice = await Invoice.findByIdAndDelete(req.params.id);
       if (!deletedInvoice) {
         return res.status(404).send(); 
