@@ -62,5 +62,5 @@ export default function Auth() {
   }
 
   // Redirect if no token or no user is fetched
-  return token && user ? <Outlet /> : <Navigate to="/login" />;
+  return token && user ? <Outlet /> : <Outlet />;
 }

@@ -4,7 +4,7 @@ import LogsHeader from './LogsHeader';
 import TableBar from './TableBar';
 import axios from 'axios';
 import logsData from './fake_logs';
-import { useEffect, useState, useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { ClinicalContext } from '../auth/contextFile';
 import { async } from 'q';
 
@@ -37,7 +37,6 @@ const Logs = () => {
 
         // Setting the logs data
         const slicedData = respone.data.slice(0, 15);
-        console.log(slicedData);
         setLogsData(slicedData);
       } catch (err) {
         console.log(err);
@@ -46,7 +45,7 @@ const Logs = () => {
   }, []);
 
   const groupedLogs = groupLogsByDate(logsData);
-  // console.log(groupedLogs);
+  console.log(`data: ${Object.entries(groupedLogs)}`);
 
   return (
     <div className="bg-red- w-[95%] m-auto h-screen">
@@ -62,9 +61,11 @@ const Logs = () => {
       {/* Logs container */}
       {Object.entries(groupedLogs).map(([date, logs]) => (
         <div key={date} className="relative mb-2 overflow-hidden">
+
           {/* Vertical Line as Timeline */}
           <div className="absolute right-[20px] top-10 bottom-10 2xl:right-[35px] w-[2px] bg-[#14B6DA] -z-10"></div>
 
+          {/* date */}
           <div className="flex justify-end z-10">
             <h3 className="text-xl 2xl:text-2xl font-bold my-4 bg-white p-2 rounded-xl border border-[#14B6DA]">
               {date}
@@ -75,6 +76,7 @@ const Logs = () => {
           {logs.map((logObj, index) => (
             <LogBar log={logObj} key={index} />
           ))}
+
         </div>
       ))}
     </div>

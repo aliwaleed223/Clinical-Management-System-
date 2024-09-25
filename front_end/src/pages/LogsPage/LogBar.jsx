@@ -29,23 +29,6 @@ const statesStyles = {
   },
 };
 
-// const statesStyles = {
-//   Pending: {
-//     icon_bgColor: 'bg-[#FFFCDF]',
-//     activityClr: '#FFE500',
-//     acitvityBgClr: '#FFFCDF',
-//   },
-//   Completed: {
-//     icon_bgColor: 'bg-[#A8E6CF]',
-//     activityClr: '#2E8B57',
-//     acitvityBgClr: '#A8E6CF',
-//   },
-//   Fail: {
-//     icon_bgColor: 'bg-[#FFCDD2]',
-//     activityClr: '#E91E63',
-//     acitvityBgClr: '#FFCDD2',
-//   },
-// };
 
 const activityIcons = {
   'اضافة منتج': add_product,
@@ -63,7 +46,6 @@ const activityIcons = {
 };
 
 const LogBar = ({ log }) => {
-  console.log(log);
   return (
     <div className="flex flex-row-reverse py-2 pb-0 items-center mb-2">
       <LogBarCircle
