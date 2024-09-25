@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const PatientSchema = new Schema({
-  name: {
+  patientName: {
     type: String,
     required: true,
   },
@@ -39,7 +39,6 @@ const PatientSchema = new Schema({
   },
   diseaseType: {
     type: String,
-    enum: ['Chronic', 'Temporary'],
     required: true,
   },
   disease: {

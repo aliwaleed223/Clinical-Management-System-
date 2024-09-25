@@ -1,16 +1,17 @@
 import Patient from '../models/patient.js';
- 
+import logController from './logsController.js';
+
 
 const patientController = {
 
   // Create a new patient
   createPatient: async (req, res) => {
     try {
-        const { name, age, phone, gender, address, registrationDate , idNumber, email, disease, diseaseType, notes} = req.body;
+        const { patientName, age, phone, gender, address, registrationDate , idNumber, email, disease, diseaseType, notes} = req.body;
         const picturePath = req.file ? req.file.path : null;
 
         const newPatient = new Patient({
-            name,
+            patientName,
             age,
             phone,
             registrationDate,
@@ -25,6 +26,7 @@ const patientController = {
         });
 
         const savedPatient = await newPatient.save();
+        await logController.saveInLogs(req, savedPatient._id , Patient , 'أضافة مريض');
         res.status(201).json(savedPatient);
     } catch (error) {
         res.status(500).json({ message: 'Error creating patient', error });
@@ -71,6 +73,10 @@ const patientController = {
   // Delete a patient by ID
   deletePatient: async (req, res) => {
     try {
+      const patientId = req.params.id;
+      await logController.saveInLogs(req, patientId , Patient , 'حذف مريض');
+
+      
       const patient = await Patient.findByIdAndDelete(req.params.id);
       if (!patient) {
         return res.status(404).send();
