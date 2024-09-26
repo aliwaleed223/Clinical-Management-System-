@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import filter_icon from '../../images/filter-icon.svg';
+import filter_icon from '../../images/filter.svg';
 
 const Filter = ({ range, onSetRange }) => {
   const [showDatePicker, setShowDatePicker] = useState(false);

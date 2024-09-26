@@ -1,0 +1,30 @@
+[
+  {
+    "patient": "وسام امير صالح",
+    "total": 1600,
+    "paid": 1600,
+    "unpaid": 0,
+    "back": 0
+  },
+  {
+    "patient": "سمر وعدالله",
+    "total": 1100,
+    "paid": 750,
+    "unpaid": 350,
+    "back": 0
+  },
+  {
+    "patient": "منار عمر",
+    "total": 750,
+    "paid": 500,
+    "unpaid": 250,
+    "back": 0
+  },
+  {
+    "patient": "نور محمد سهير",
+    "total": 4300,
+    "paid": 3700,
+    "unpaid": 600,
+    "back": 1000
+  }
+]

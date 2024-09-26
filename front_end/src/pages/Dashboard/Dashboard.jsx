@@ -18,10 +18,10 @@ const Dashboard = () => {
 
         {/* statistcs */}
         <Statistics />
-
       </div>
     </div>
   );
 };
+
 
 export default Dashboard;
