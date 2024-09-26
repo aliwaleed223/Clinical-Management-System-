@@ -144,37 +144,37 @@ deleteUser:async(req,res,next)=>{
 },
 
 getDecodedToken : async (req) => {
-  try {
+ try {
     const authHeader = req.headers['authorization'];
 
     if (!authHeader) {
-      return res.status(401).send('Authorization header missing');
+      throw new Error('Authorization header missing');
     }
+    
     const splitToken = authHeader.split(' ')[1];
 
     // The payload is the second part (index 1)
     const payloadBase64 = splitToken.split('.')[1];
 
     const payloadJson = Buffer.from(payloadBase64, 'base64').toString('utf-8');
-   
     const payload = JSON.parse(payloadJson);
 
-    return payload
+    return payload;
 
   } catch (error) {
-
-    console.log(error);
-
-    res.status(400).send('Error');
+    console.error('Error decoding token:', error.message);
+    throw new Error('Invalid token');
   }
+
 },
 
-getMe: (req, res) => {
+getMe: async (req, res) => {
   try {
-    const payload = getDecodedToken(req);
-    return res.status(200).json(payload);  
+    const payload = await authController.getDecodedToken(req); 
+    return res.status(200).json(payload);
   } catch (error) {
-    res.status(400).send('Error');
+    console.error('Error in getMe:', error.message);
+    return res.status(400).send(error.message); 
   }
 },
 

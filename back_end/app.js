@@ -12,7 +12,6 @@ const app = express();
 // Middleware to parse JSON
 app.use(express.json());
 
-
 const whitelist = ['http://localhost:5000']; 
 
 const corsOptions = {
