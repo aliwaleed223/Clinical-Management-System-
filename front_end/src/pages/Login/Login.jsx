@@ -3,13 +3,11 @@ import './Login.css';
 import { Helmet } from 'react-helmet';
 import {Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { ClinicalContext } from '../auth/contextFile';
 function Login() { 
-
-
   const [info , setInfo]=useState({username:'',password:''})
   const navigate = useNavigate();
-
+  const { handleLogin } = useContext(ClinicalContext);
   function handelInfo(type,newInfo){
 
 
@@ -36,6 +34,7 @@ function Login() {
       );
       
       localStorage.setItem('token',response.data.token)
+      handleLogin(response.data.token)
       console.log("Data saved successfully:", response.data);
       navigate('/' , {replace:true})
      

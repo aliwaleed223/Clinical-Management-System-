@@ -178,7 +178,7 @@ function RP_AddPatient(){
             <input
             type="checkbox"
             name="condition"
-            checked={formData.diseaseType === 'مرض عارض'}
+            checked={formData.diseaseType === 'مرض عام'}
               
               onChange={(e)=>{handleChange('diseaseType','مرض عام')}}
             />

@@ -11,7 +11,10 @@ function InvoicePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [slect, setSlect] = useState('');
 
+
+  ////////////////////////////////////{git all invoices}//////////////////////////////////////////////////
   useEffect(() => {
     async function getAllinvoice() {
       try {
@@ -35,7 +38,35 @@ function InvoicePage() {
       }
     }
     getAllinvoice();
-  }, []); // Dependency array ensures it runs only once on page load
+  }, [token]); // Dependency array ensures it runs only once on page load
+  ////////////////////////////////////{git all invoices}//////////////////////////////////////////////////
+
+  ////////////////////////////////////{delete invoice}//////////////////////////////////////////////////
+
+async function deleteInvoice(id) {
+  try {
+    await axios({
+      method: "delete",
+      url: `http://localhost:4000/api/invoice/invoice/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    
+    alert("تم حذف الفاتورة بنجاح ");
+    // eslint-disable-next-line no-restricted-globals
+    location.reload()
+  } catch (error) {
+    if (error.response) {
+      console.error("Error response data:", error.response.data);
+    } else if (error.request) {
+      console.error("Error request:", error.request);
+    } else {
+      console.error("Error message:", error.message);
+    }
+  }
+}
+ ////////////////////////////////////{delete invoice}//////////////////////////////////////////////////
 
   // Filter the invoices based on search term, start date, and end date
   const filteredInvoices = invoices.filter(invoice => {
@@ -47,6 +78,11 @@ function InvoicePage() {
   
     return matchesSearchTerm && matchesDateRange;
   });
+
+
+
+
+
   return (
     <div className='InvoicePage-container'>
       <div className="InvoicePage-header">
@@ -54,7 +90,7 @@ function InvoicePage() {
         <p>قائمة الفواتير</p>
       </div>
       <div className='InvoicePage-search'>
-        <img src={trash} alt="Delete Invoice" />
+        <img src={trash} alt="Delete Invoice"  style={{cursor:"pointer"}}  onClick={()=>{deleteInvoice(slect)}}/>
         <img src={AddInvoiceimg} alt="Add Invoice" />
         <input
           type="text"
@@ -83,7 +119,7 @@ function InvoicePage() {
         <div className='table-body'>
           {filteredInvoices.length > 0 ? (
             filteredInvoices.map((invoice, index) => (
-              <div className='row' key={invoice.id}>
+              <div className={`row ${slect===invoice._id ? "SelectClass" : ""}`} key={invoice.id}  onClick={()=>setSlect(invoice._id)}>
                 <p>{invoice.createdAt}</p>
                 <p>مشترك</p>
                 <p>{invoice.patientName}</p>
