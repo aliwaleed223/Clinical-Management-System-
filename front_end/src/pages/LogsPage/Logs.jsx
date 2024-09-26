@@ -8,9 +8,13 @@ import { useEffect, useState, useContext } from 'react';
 import { ClinicalContext } from '../auth/contextFile';
 import { async } from 'q';
 
+
+
 const groupLogsByDate = (logs) => {
   return logs.reduce((acc, log) => {
-    const { date } = log;
+    // Extract the date part from the dateTime field
+    const date = log.dateTime.split(' ')[0]; // Gets the date part (e.g., "2024/9/25")
+
     if (!acc[date]) {
       acc[date] = [];
     }
@@ -19,7 +23,9 @@ const groupLogsByDate = (logs) => {
   }, {});
 };
 
+
 const Logs = () => {
+  // const token = localStorage.getItem('token');
   const { token } = useContext(ClinicalContext);
   const [logsData, setLogsData] = useState([]);
 
@@ -45,7 +51,7 @@ const Logs = () => {
   }, []);
 
   const groupedLogs = groupLogsByDate(logsData);
-  console.log(`data: ${Object.entries(groupedLogs)}`);
+  console.log(groupedLogs);
 
   return (
     <div className="bg-red- w-[95%] m-auto h-screen">

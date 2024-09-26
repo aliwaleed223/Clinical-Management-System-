@@ -40,7 +40,7 @@ const activityIcons = {
   'صرف وصفة': give_prescription,
   'أضافة وصفة طبية': add_medical_prescription,
   'تسجيل دخول': login,
-  'اضافة مريض': add_patient,
+  'أضافة مريض': add_patient,
   'أنشاء فاتورة': add_invoice,
   'اضافة موظف': add_employee,
 };
