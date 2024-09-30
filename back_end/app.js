@@ -5,6 +5,7 @@ import authRoutes from './routes/authRoutes.js';
 import persRoutes from './routes/prescriptionRoutes.js';
 import storageRoutes from './routes/storageRoutes.js';
 import logsRoutes from './routes/logsRoutes.js';
+import pharmacistRoutes from './routes/pharmacistRoutes.js';
 import cors from 'cors';
 
 const app = express();
@@ -36,7 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/pers', persRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/logs', logsRoutes);
-
+app.use('/api/pharmacist', pharmacistRoutes);
 
 
 // Default error handling middleware (optional)

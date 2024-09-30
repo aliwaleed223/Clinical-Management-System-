@@ -9,7 +9,7 @@ const PatientSchema = new Schema({
   },
   state : {
    type : String,
-   required : true
+   required : false
   },
   gender: {
     type: String,
