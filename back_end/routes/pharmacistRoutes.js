@@ -14,15 +14,21 @@ router.post('/add', pharmacistController.addDrug);
 router.get('/list', pharmacistController.getAllDrugs);
 
 // Get drug by ID
-router.get('/:id', pharmacistController.getDrugById);
+router.get('/getDrug/:id', pharmacistController.getDrugById);
 
 // Update drug by ID
-router.put('/:id', pharmacistController.updateDrug);
+router.put('/updateById/:id', pharmacistController.updateDrug);
 
 // Delete drug by ID
-router.delete('/:id', pharmacistController.deleteDrug);
+router.delete('/deleteById/:id', pharmacistController.deleteDrug);
 
 // Send Drug Request
 router.post('/drugRequest', pharmacistController.requestDrugFromStorage);
+
+// Get all notification 
+router.get('/getNotifications', pharmacistController.getNotifications);
+
+// respond To Drug request
+router.put('/respondToDrug/:requestId', pharmacistController.respondToDrugRequest);
 
 export default router;
