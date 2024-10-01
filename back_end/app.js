@@ -5,13 +5,13 @@ import authRoutes from './routes/authRoutes.js';
 import persRoutes from './routes/prescriptionRoutes.js';
 import storageRoutes from './routes/storageRoutes.js';
 import logsRoutes from './routes/logsRoutes.js';
+import pharmacistRoutes from './routes/pharmacistRoutes.js';
 import cors from 'cors';
 
 const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
-
 
 const whitelist = ['http://localhost:5000']; 
 
@@ -27,6 +27,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error', error: err.message });
+});
+
 // Make the uploads folder accessible to the public
 app.use('/uploads', express.static('uploads'));
 
@@ -37,7 +42,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/pers', persRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/logs', logsRoutes);
-
+app.use('/api/pharmacist', pharmacistRoutes);
 
 
 // Default error handling middleware (optional)

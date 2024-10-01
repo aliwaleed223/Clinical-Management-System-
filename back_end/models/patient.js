@@ -7,9 +7,13 @@ const PatientSchema = new Schema({
     type: String,
     required: true,
   },
+  state : {
+   type : String,
+   required : false
+  },
   gender: {
     type: String,
-    enum: ['Male', 'Female'],
+    //enum: ['Male', 'Female'],
     required: true,
   },
   age: {

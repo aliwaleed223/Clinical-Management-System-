@@ -3,25 +3,53 @@ import mongoose from 'mongoose';
 const PrescriptionSchema = new mongoose.Schema({
   patientName: {
     type: String,
-    required: true,
+    required: true
+  },
+  patientAge: {
+    type: Number,
+    required: true
+  },
+  patientGender: {
+    type: String,
+    required: true
+  },
+  medicalProcedure: {
+    type: String,
+    required: true
+  },
+  reviewDate: {
+    type: Date,
+    required: true
+  },
+  diagnosis: {
+    type: String,
+    required: true
   },
   doctorName: {
     type: String,
-    required: true,
+    required: true
   },
-  medicine: {
-    type: String,
-    required: true,
+  procedureCost: {
+    type: Number,
+    required: true
   },
-  dosage: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,  
-  },
+  prescriptions: [
+    {
+      medicineName: { type: String, required: true },
+      dose: { type: String, required: true },
+      form: { type: String },
+      frequency: { type: String, required: true },
+      duration: { type: String, required: true },
+      instructions: { type: String }
+    }
+  ],
+  additionalNotes: {
+    type: String
+  }
+}, {
+  timestamps: true
 });
+
 
 const Prescription = mongoose.model('Prescription', PrescriptionSchema);
 
