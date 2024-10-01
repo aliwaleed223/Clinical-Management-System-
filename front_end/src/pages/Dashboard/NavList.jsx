@@ -43,8 +43,10 @@ const NavList = () => {
       itemText: 'مخزن الادوية',
       itemLink: '/drugstore',
     },
-    { itemImgLink: records_icon, itemText: 'السجلات', itemLink: '/records' },
-    { itemImgLink: reports_icon, itemText: 'التقارير', itemLink: '/reports' },
+    { itemImgLink: records_icon, itemText: 'السجلات', itemLink: '/logs' },
+    { itemImgLink: reports_icon, itemText: 'تقارير الفواتير', itemLink: '/billing-report' },
+    { itemImgLink: reports_icon, itemText: 'تقارير متابعة الفواتير', itemLink: '/follow-up' },
+    { itemImgLink: reports_icon, itemText: 'المخزن الطبي ', itemLink: '/drugstore' },
   ];
 
   return (

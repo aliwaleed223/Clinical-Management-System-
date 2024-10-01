@@ -1,0 +1,9 @@
+.userInfo > input {
+  border: 1px solid rgb(0, 0, 0);
+  border-color: rgb(36, 204, 204);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}

@@ -6,7 +6,8 @@ import StatsGrid from './StatsGrid'
 // import token from '../../token';
 
 const Stats = () => {
-  const { token } = useContext(ClinicalContext);
+  // const { token } = useContext(ClinicalContext);
+  const token = localStorage.getItem("token")
   const [numberOfPatients, setNumberOfPatients] = useState(0);
   const [numberOfEmployees, setNumberOfEmployees] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
