@@ -1,4 +1,4 @@
-const patientData = {
+const fakeData = {
   personalInfo: {
     fullName: 'ماريا احمد محمد',
     gender: 'انثى',
@@ -107,4 +107,4 @@ const patientData = {
   ],
 };
 
-export default patientData;
+export default fakeData;

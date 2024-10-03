@@ -6,7 +6,7 @@ const ReceptionNav = () => {
     <nav className='w-[70%] mt-4'>
       <ul className='flex justify-between items-center'>
         <li>
-          <button className='bg-white p-5 rounded-full'>
+          <button className='bg-white p-5 rounded-full' onClick={() => window.history.back()}>
             <img src={back_arrow} className=''/>
           </button>
         </li>

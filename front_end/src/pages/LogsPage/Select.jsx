@@ -22,7 +22,7 @@ const Select = ({ optionsHeader, optionsList }) => {
         <ul className="absolute bg-white w-full right-0 top-12 rounded-b-xl border border-[#14B6DA] ">
           {optionsList.map((option) => {
             return (
-              <li className="py-2  hover:bg-[#B7EBF7] border border-[#14B6DA] 2xl:text-xl">
+              <li className="py-2 hover:bg-[#B7EBF7] border border-[#14B6DA] 2xl:text-xl">
                 {option}
               </li>
             );

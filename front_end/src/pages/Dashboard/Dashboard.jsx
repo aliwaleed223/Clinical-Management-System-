@@ -11,7 +11,7 @@ const Dashboard = () => {
       {/* main content */}
       <div className="2xl:w-[70%] w-[80%] m-auto h-screen">
         {/* welcome part */}
-        <Welcome name="أحمد" />
+        <Welcome />
 
         {/* navigation grids */}
         <NavigationGrids />

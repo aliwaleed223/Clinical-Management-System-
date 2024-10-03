@@ -1,4 +1,4 @@
-const PersonalInfo = ({ patientPersonalInfo, notes }) => {
+const PersonalInfo = ({ patientPersonalInfo }) => {
   return (
     <div
       className="grid grid-cols-2 sm:grid-cols-2 grid-rows-6 py-2 sm:py-5 gap-2"
@@ -8,12 +8,12 @@ const PersonalInfo = ({ patientPersonalInfo, notes }) => {
     >
       <InfoFields
         fieldName="الاسم الكامل"
-        fieldInfo={patientPersonalInfo.fullName}
+        fieldInfo={patientPersonalInfo.patientName}
       />
       <InfoFields fieldName="الجنس" fieldInfo={patientPersonalInfo.gender} />
       <InfoFields
         fieldName="رقم الهاتف"
-        fieldInfo={patientPersonalInfo.phoneNumber}
+        fieldInfo={patientPersonalInfo.phone}
       />
       <InfoFields fieldName="العمر" fieldInfo={patientPersonalInfo.age} />
       <InfoFields
@@ -22,16 +22,16 @@ const PersonalInfo = ({ patientPersonalInfo, notes }) => {
       />
       <InfoFields
         fieldName="تاريخ التسجيل"
-        fieldInfo={patientPersonalInfo.registrationDate}
+        fieldInfo={new Date(patientPersonalInfo.registrationDate).toLocaleDateString('en-CA')}
       />
       <InfoFields fieldName="العنوان" fieldInfo={patientPersonalInfo.address} />
       <InfoFields
         fieldName="البريد الالكتروني"
         fieldInfo={patientPersonalInfo.email}
       />
-      <InfoFields fieldName="المرض" fieldInfo={patientPersonalInfo.disorder} />
-      <InfoFields fieldName="*" fieldInfo={notes[0].note} />
-      <InfoFields fieldName="الملاحظات" fieldInfo={notes.note} />
+      <InfoFields fieldName="المرض" fieldInfo={patientPersonalInfo.disease} />
+      <InfoFields fieldName="*" fieldInfo={patientPersonalInfo.diseaseType} />
+      <InfoFields fieldName="الملاحظات" fieldInfo={patientPersonalInfo.notes} />
     </div>
   );
 };

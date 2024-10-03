@@ -9,13 +9,13 @@ const MainInfo = ({ patientData }) => {
   const components = {
     personalInfo: (
       <PersonalInfo
-        patientPersonalInfo={patientData.personalInfo}
-        notes={patientData.notes}
+        patientPersonalInfo={patientData}
+        notes={patientData}
       />
     ),
-    bills: <Bills invoices={patientData.invoices} />,
+    bills: <Bills invoices={[]} />,
     medicalPrescriptions: (
-      <MedicalPrescriptions medicalRecords={patientData.medicalRecords} />
+      <MedicalPrescriptions medicalRecords={[]} />
     ),
   };
 
@@ -51,9 +51,8 @@ const MainInfo = ({ patientData }) => {
 const InfoBtn = ({ btnText, changePage, isOpen }) => {
   return (
     <button
-      className={`px-2 sm:px-5 py-2 sm:py-3 text-md sm:text-2xl font-amiri rounded-2xl hover:bg-[#14B6DA] hover:text-white transition-all ${
-        isOpen ? 'text-white bg-[#14B6DA]' : 'bg-[#B7EBF7]'
-      }`}
+      className={`px-2 sm:px-5 py-2 sm:py-3 text-md sm:text-2xl font-amiri rounded-2xl hover:bg-[#14B6DA] hover:text-white transition-all ${isOpen ? 'text-white bg-[#14B6DA]' : 'bg-[#B7EBF7]'
+        }`}
       onClick={() => changePage()}
     >
       {btnText}

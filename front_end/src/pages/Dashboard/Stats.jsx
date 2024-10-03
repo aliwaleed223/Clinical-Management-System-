@@ -41,7 +41,6 @@ const Stats = () => {
         ]);
 
         // setting the values to fetched data
-        console.log(employees.data);
         setNumberOfEmployees(employees.data.length);
         setNumberOfPatients(patients.data.length);
 

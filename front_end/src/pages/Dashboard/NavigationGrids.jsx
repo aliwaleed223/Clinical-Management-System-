@@ -8,9 +8,9 @@ const NavigationGrids = () => {
   return (
     <div className="grid grid-cols-4 gap-4 mt-4">
       <Grid gridImg={records} gridText={'السجلات'} link="/logs"/>
-      <Grid gridImg={reports} gridText={'التقارير'} link={'/'}/>
+      <Grid gridImg={reports} gridText={'التقارير'} link={'/billing-report'}/>
       <Grid gridImg={employe_list} gridText={'قائمة الموظفين'} link='/'/>
-      <Grid gridImg={add_employe} gridText={'اضافة موظف'} link={'/'}/>
+      <Grid gridImg={add_employe} gridText={'اضافة موظف'} link={'/add-user'}/>
     </div>
   );
 };

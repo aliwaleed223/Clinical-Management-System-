@@ -10,7 +10,7 @@ const SideInfo = ({ patientMainInfo }) => {
       <div>
         <img src={user_icon} alt="user image" className="h-24 mx-auto" />
         <h2 className="text-right text-2xl sm:text-3xl mt-5">
-          {patientMainInfo.fullName}
+          {patientMainInfo.patientName}
         </h2>
       </div>
 
@@ -22,11 +22,11 @@ const SideInfo = ({ patientMainInfo }) => {
         <Contact iconLink={email_icon} contactText={patientMainInfo.email} />
         <Contact
           iconLink={phone_icon}
-          contactText={patientMainInfo.phoneNumber}
+          contactText={patientMainInfo.phone}
         />
         <Contact
           iconLink={calender_icon}
-          contactText={patientMainInfo.birthDate}
+          contactText={patientMainInfo.age}
         />
       </div>
     </div>

@@ -45,13 +45,11 @@ const Logs = () => {
         const slicedData = respone.data.slice(0, 15);
         setLogsData(slicedData);
       } catch (err) {
-        console.log(err);
       }
     })();
   }, []);
 
   const groupedLogs = groupLogsByDate(logsData);
-  console.log(groupedLogs);
 
   return (
     <div className="bg-red- w-[95%] m-auto h-screen">

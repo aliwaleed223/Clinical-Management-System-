@@ -19,35 +19,33 @@ import BillingReport from './pages/RecordsPage/BillingReports';
 import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
 import DrugStore from './pages/RecordsPage/DrugStore';
 import AddPrescription from './pages/AddPrescription/AddPrescription';
+import AddUser from './pages/AddUser/AddUser'
 
 function App() {
   return (
     <div className="App mx-auto font-amiri">
       <Router>
         <Routes>
-          {/* <Route path="/adduser" element={<Adduser />} /> */}
-
           <Route path="/Login" element={<Login />} />
-          <Route element={<Auth />} />  
-
-          {/* <Route element={<Auth />}> */}
-          <Route path="/PharmacrPage" element={<PharmacrPage />} />
-          <Route path="/" element={<Homepage />} />
-          <Route path="/Reception" element={<Reception />} />
-          <Route path="/InvoicePageb" element={<InvoicePageb />} />
-          <Route path="/RPL" element={<RPL />} />
-          <Route path="/AddPatient" element={<RP_AddPatient />} />
-          <Route path="/InvoicePage" element={<InvoicePage />} />
-          <Route path="/doctor" element={<DoctorPage />} />
-          <Route path="/patient-profile" element={<PatientProfile />} />
-          <Route path="/cardpage" element={<Cardpage />} />
-          <Route path="/logs" element={<Logs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/billing-report" element={<BillingReport />} />
-          <Route path="/follow-up" element={<FollowUpBilling />} />
-          <Route path="/drugstore" element={<DrugStore />} />
-          <Route path="/add-prescription" element={<AddPrescription />} />
-          {/* </Route> */}
+          <Route element={<Auth />} >
+            <Route path="/PharmacrPage" element={<PharmacrPage />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/Reception" element={<Reception />} />
+            <Route path="/InvoicePageb" element={<InvoicePageb />} />
+            <Route path="/RPL" element={<RPL />} />
+            <Route path="/AddPatient" element={<RP_AddPatient />} />
+            <Route path="/InvoicePage" element={<InvoicePage />} />
+            <Route path="/doctor" element={<DoctorPage />} />
+            <Route path="/patient-profile/:patientId" element={<PatientProfile />} />
+            <Route path="/cardpage" element={<Cardpage />} />
+            <Route path="/logs" element={<Logs />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/billing-report" element={<BillingReport />} />
+            <Route path="/follow-up" element={<FollowUpBilling />} />
+            <Route path="/drugstore" element={<DrugStore />} />
+            <Route path="/add-prescription" element={<AddPrescription />} />
+            <Route path="/add-user" element={<AddUser />} />
+          </Route>
         </Routes>
       </Router>
     </div>
