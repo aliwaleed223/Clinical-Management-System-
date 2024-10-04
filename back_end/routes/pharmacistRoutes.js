@@ -7,28 +7,22 @@ const router = express.Router();
 // protected middleware
 router.use(authController.protected);
 
-// Add new drug
-router.post('/add', pharmacistController.addDrug);
-
-// Get all drugs
-router.get('/list', pharmacistController.getAllDrugs);
-
-// Get drug by ID
-router.get('/getDrug/:id', pharmacistController.getDrugById);
-
-// Update drug by ID
-router.put('/updateById/:id', pharmacistController.updateDrug);
-
-// Delete drug by ID
-router.delete('/deleteById/:id', pharmacistController.deleteDrug);
-
 // Send Drug Request
 router.post('/drugRequest', pharmacistController.requestDrugFromStorage);
 
 // Get all notification 
-router.get('/getNotifications', pharmacistController.getNotifications);
+router.get('/getNotifications', pharmacistController.requestedList);
 
 // respond To Drug request
 router.put('/respondToDrug/:requestId', pharmacistController.respondToDrugRequest);
+
+// get all drug
+router.get('/getAllDrug', pharmacistController.getAllDrugs);
+
+// get all responses (قائمة استجابة الطلبات)
+router.get('/getAllResponses', pharmacistController.getAllResponses);
+
+// استجابة طلب الصيدلية
+router.get('/getResponses/:id', pharmacistController.getResById);
 
 export default router;

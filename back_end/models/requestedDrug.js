@@ -13,9 +13,15 @@ const requestedDrugSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  drugForm:{
+    type : String
+  },
   requestDate: {
     type: Date,
     default: Date.now,
+  },
+  additionalNote  :{
+    type : String , 
   },
   status: {
     type: String,

@@ -1,81 +1,20 @@
-import PharmacistDrug from '../models/PharmacistDrug.js';
-import Notification from '../models/Notification.js'; 
+import resToReq from '../models/resToReq.js'; 
 import RequestedDrug from '../models/requestedDrug.js'; 
+import DrugListPharmicy from '../models/DrugListPharmicy.js';
 
 const pharmacistController = {
   
-  // Create new drug entry
-  addDrug: async (req, res) => {
-    try {
-      const newDrug = new PharmacistDrug(req.body);
-      await newDrug.save();
-      res.status(201).json(newDrug);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  },
-
-  // Fetch all drugs
-  getAllDrugs: async (req, res) => {
-    try {
-      const drugs = await PharmacistDrug.find({});
-      res.status(200).json(drugs);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  },
-
-  // Fetch a single drug by ID
-  getDrugById: async (req, res) => {
-    try {
-      const drug = await PharmacistDrug.findById(req.params.id);
-      if (!drug) {
-        return res.status(404).json({ message: 'Drug not found' });
-      }
-      res.status(200).json(drug);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  },
-
-  // Update drug details
-  updateDrug: async (req, res) => {
-    try {
-      const updatedDrug = await PharmacistDrug.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true,
-      });
-      if (!updatedDrug) {
-        return res.status(404).json({ message: 'Drug not found' });
-      }
-      res.status(200).json(updatedDrug);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  },
-
-  // Delete drug entry
-  deleteDrug: async (req, res) => {
-    try {
-      const deletedDrug = await PharmacistDrug.findByIdAndDelete(req.params.id);
-      if (!deletedDrug) {
-        return res.status(404).json({ message: 'Drug not found' });
-      }
-      res.status(200).json(deletedDrug);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  },
-
   
     requestDrugFromStorage: async (req, res) => {
   try {
-    const { pharmacistName, drugName, quantity } = req.body;
+    const { pharmacistName, drugName, quantity ,drugForm ,additionalNote } = req.body;
 
     const newRequest = new RequestedDrug({
       pharmacistName,
       drugName,
       quantity,
+      drugForm,
+      additionalNote,
       status: 'pending', 
       requestDate: new Date(),
     });
@@ -83,17 +22,17 @@ const pharmacistController = {
     // Save the request to the requestedDrug collection
     await newRequest.save(); // Use the save method on the instance
 
-
+    // notification code ---------
     // Create a notification for the storage manager
-    const notification = new Notification({
-      message: `طلب دواء جديد من الصيدلي ${pharmacistName}`,
-      requestId: newRequest._id,
-      isRead: false, // Mark as unread notification
-      createdAt: new Date(),
-    });
-
+    // const notification = new Notification({
+    //   message: `طلب دواء جديد من الصيدلي ${pharmacistName}`,
+    //   requestId: newRequest._id,
+    //   isRead: false, // Mark as unread notification
+    //   createdAt: new Date(),
+    // });
     // Save the notification
-    await notification.save();
+    // await notification.save();
+    //--------------------------//
 
     // Send a response back to the pharmacist
     res.status(201).json({ message: 'تم إرسال الطلب بنجاح', request: newRequest });
@@ -107,24 +46,66 @@ const pharmacistController = {
     respondToDrugRequest: async (req, res) => {
     try {
     const { requestId } = req.params;
-    const { status } = req.body;  // Status can be 'approved' or 'rejected'
-
+    
     // Update the request status in the requestedDrug collection
-    const updatedRequest = await RequestedDrug.findByIdAndUpdate(
-      requestId,
-      { status },
-      { new: true }
-    );
+    const deletedRequest = await RequestedDrug.findByIdAndDelete(requestId);
 
-    if (!updatedRequest) {
-      return res.status(404).json({ message: 'الطلب غير موجود' });
-    }
+    if (!deletedRequest) {
+      return res.status(404).json({ message: 'Request not found' });
+     }
+
+    // Extract data from the request body
+    const {
+      pharmacistName,
+      requestDate,
+      drugName,
+      drugForm,
+      quantityRequested,
+      notes,
+      storageManagerName,
+      storageStatus,
+      availableQuantity,
+      expirationDate,
+      responseDate,
+      additionalNotes
+    } = req.body;
+
+
+    const newDrugListPharmicy = new DrugListPharmicy({
+      drugs:  drugName,
+      quantity:  availableQuantity,
+      drugform: drugForm,
+      expire:   expirationDate
+    })
+
+    await newDrugListPharmicy.save();
+
+      const newRequest = new resToReq({
+      pharmacistName,
+      requestDate,
+      drugName,
+      drugForm,
+      quantityRequested,
+      notes,
+      storageResponse: {
+        storageManagerName,
+        storageStatus,
+        availableQuantity,
+        expirationDate,
+        responseDate,
+        additionalNotes
+      }
+    });
+
+    // Save to the database
+    await newRequest.save();
 
     // Mark the notification as read or remove it
-    await Notification.findOneAndDelete({ requestId });
+    // await Notification.findOneAndDelete({ requestId });
 
     // Send response to storage manager and pharmacist
-    res.status(200).json({ message: `تمت معالجة الطلب وتم ${status === 'approved' ? 'إرسال الدواء' : 'رفض الطلب'}`, request: updatedRequest });
+   
+     res.status(201).json({ data: newRequest });
 
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -133,14 +114,49 @@ const pharmacistController = {
   },
 
   // Function to get pending notifications for the storage manager
-  getNotifications: async (req, res) => {
+  requestedList: async (req, res) => {
     try {
-      const notifications = await Notification.find({ isRead: false });
+      const notifications = await RequestedDrug.find();
       res.status(200).json(notifications);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  }
+  },
+
+  // Fetch all drugs (قائمة الادوية)
+  getAllDrugs: async (req, res) => {
+    try {
+      const drugs = await DrugListPharmicy.find({ quantity: { $gt: 0 } });
+      
+      res.status(200).json(drugs);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+  // Fetch all responses (قائمة استجابة الطلبات)
+  getAllResponses: async (req, res) => {
+    try {
+      const drugs = await resToReq.find();
+      
+      res.status(200).json(drugs);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
+
+    // Fetch all responses (قائمة استجابة الطلبات)
+  getResById: async (req, res) => {
+    try {
+      const drugs = await resToReq.findById(req.params.id);
+      
+      res.status(200).json(drugs);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+
 
 
 };
