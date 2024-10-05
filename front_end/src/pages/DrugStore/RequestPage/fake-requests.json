@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c1",
+    "medicineName": "Paracetamol",
+    "amountRequested": 50,
+    "medicineForm": "حبوب",
+    "pharmacistName": "علي محمد الكاظمي",
+    "requestDate": "2024-10-02T08:30:00.000Z",
+    "notes": "زيادة الطلب على الدواء بسبب ارتفاع عدد حالات الإصابة بالحمى"
+  },
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c2",
+    "medicineName": "Ibuprofen",
+    "amountRequested": 30,
+    "medicineForm": "حبوب",
+    "pharmacistName": "خالد أحمد السعدي",
+    "requestDate": "2024-10-03T10:15:00.000Z",
+    "notes": "طلب الدواء لتغطية نقص المخزون في المستشفى"
+  },
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c3",
+    "medicineName": "شراب السعال",
+    "amountRequested": 20,
+    "medicineForm": "شراب",
+    "pharmacistName": "فاطمة يوسف العبيدي",
+    "requestDate": "2024-10-03T14:45:00.000Z",
+    "notes": "زيادة عدد حالات الإصابة بالزكام تتطلب توفر المزيد من الشراب"
+  },
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c4",
+    "medicineName": "Amoxicillin",
+    "amountRequested": 100,
+    "medicineForm": "كبسولات",
+    "pharmacistName": "عمر حسن الشمري",
+    "requestDate": "2024-10-04T09:20:00.000Z",
+    "notes": "زيادة في عدد حالات الالتهاب الرئوي تتطلب مضاد حيوي إضافي"
+  },
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c5",
+    "medicineName": "Vitamin C",
+    "amountRequested": 200,
+    "medicineForm": "حبوب",
+    "pharmacistName": "أمينة علي الجبوري",
+    "requestDate": "2024-10-04T11:00:00.000Z",
+    "notes": "زيادة في طلب المرضى على الفيتامينات بسبب نقص المناعة الموسمي"
+  },
+  {
+    "_id": "6701a12bcf9d4ea5b0eab9c6",
+    "medicineName": "Salbutamol Inhaler",
+    "amountRequested": 15,
+    "medicineForm": "جهاز استنشاق",
+    "pharmacistName": "سمير خالد الدليمي",
+    "requestDate": "2024-10-04T13:30:00.000Z",
+    "notes": "ارتفاع عدد حالات الربو تستوجب زيادة طلب أجهزة الاستنشاق"
+  }
+]

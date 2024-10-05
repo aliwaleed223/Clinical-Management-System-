@@ -4,7 +4,7 @@ import Login from './pages/Login/Login';
 import Homepage from '../src/pages/Homepage/home';
 import RPL from './pages/Receptionist-Patient-List/RpatientList';
 import RP_AddPatient from './pages/RP_AddPatient/RP_AddPatient';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import InvoicePage from './pages/InvoicePage/InvoicePage';
 import InvoicePageb from './pages/InvoicePage_b/InvoicePage';
 import Reception from './pages/Reception/Reception';
@@ -20,6 +20,7 @@ import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
 import DrugStore from './pages/RecordsPage/DrugStore';
 import AddPrescription from './pages/AddPrescription/AddPrescription';
 import AddUser from './pages/AddUser/AddUser'
+import RequestPage from './pages/DrugStore/RequestPage/RequestsPage';
 
 function App() {
   return (
@@ -42,9 +43,13 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/billing-report" element={<BillingReport />} />
             <Route path="/follow-up" element={<FollowUpBilling />} />
-            <Route path="/drugstore" element={<DrugStore />} />
+            <Route path="/drugstore-reports" element={<DrugStore />} />
             <Route path="/add-prescription" element={<AddPrescription />} />
             <Route path="/add-user" element={<AddUser />} />
+            <Route path='drugstore' element={<div><Outlet /></div>}>
+              <Route path='requests' element={<RequestPage />} />
+              <Route path=':requestId' element={<h1>Hello</h1>}/>
+            </Route>
           </Route>
         </Routes>
       </Router>
