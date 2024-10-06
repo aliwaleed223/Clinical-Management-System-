@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './pages/Login/Login';
-// import Adduser from './pages/AddUser/AddUser'
+
 import Homepage from '../src/pages/Homepage/home';
 import RPL from './pages/Receptionist-Patient-List/RpatientList';
 import RP_AddPatient from './pages/RP_AddPatient/RP_AddPatient';
@@ -19,16 +19,23 @@ import BillingReport from './pages/RecordsPage/BillingReports';
 import FollowUpBilling from './pages/RecordsPage/FollowUpBillingReport';
 import DrugStore from './pages/RecordsPage/DrugStore';
 import AddPrescription from './pages/AddPrescription/AddPrescription';
-import AddUser from './pages/AddUser/AddUser'
-import RequestPage from './pages/DrugStore/RequestPage/RequestsPage';
 
+import RequestPage from './pages/DrugStore/RequestPage/RequestsPage';
+import Store from './pages/Store/store';
+import AddProduct from './pages/AddProduct/AddProduct';
+import Addprescription from './pages/AddPrescription/AddPrescription'
+import ProductAndPriceData from './pages/ProductAndPriceData/ProductAndPriceData'
 function App() {
   return (
     <div className="App mx-auto font-amiri">
       <Router>
         <Routes>
+
           <Route path="/Login" element={<Login />} />
           <Route element={<Auth />} >
+           <Route path="/Addprescription" element={<Addprescription />} />
+          <Route path="/AddProduct" element={<AddProduct />} />
+                    <Route path="/storepage" element={<Store />} />
             <Route path="/PharmacrPage" element={<PharmacrPage />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/Reception" element={<Reception />} />
@@ -45,7 +52,7 @@ function App() {
             <Route path="/follow-up" element={<FollowUpBilling />} />
             <Route path="/drugstore-reports" element={<DrugStore />} />
             <Route path="/add-prescription" element={<AddPrescription />} />
-            <Route path="/add-user" element={<AddUser />} />
+            
             <Route path='drugstore' element={<div><Outlet /></div>}>
               <Route path='requests' element={<RequestPage />} />
               <Route path=':requestId' element={<h1>Hello</h1>}/>

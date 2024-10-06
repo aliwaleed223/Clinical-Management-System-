@@ -59,7 +59,7 @@ body {
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 110px;
+gap: 4rem;
 margin-right:40px ;
 border-left: black 2px solid ;
 padding: 120px 20px ;
@@ -81,7 +81,7 @@ padding: 120px 20px ;
     border: 1.2px solid #14B6DA ;
     box-shadow: 1px 1px 1px 1px rgba(6, 6, 6, 0.171);
     text-align: end;
-    padding-right: 10px;
+   
 
    
 }

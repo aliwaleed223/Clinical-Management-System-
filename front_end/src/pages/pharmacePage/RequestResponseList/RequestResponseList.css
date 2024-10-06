@@ -1,0 +1,105 @@
+.RequestResponseList .EnterInformation{
+    display: flex;
+    justify-content: space-between;
+margin-top: 0.5rem;
+}
+
+.RequestResponseList .dateAndNotification{
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+.RequestResponseList .dateAndNotification img{
+    width: 32px;
+    height: 32px;
+}
+.RequestResponseList  .notification{
+    width: 25px;
+    height: 25px;
+    background-color: rgba(195, 248, 238, 1);
+    border: 1px solid rgba(135, 238, 219, 1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: 0;
+}
+
+.RequestResponseList .list{
+    position: relative;
+}
+.RequestResponseList .list input,.RequestResponseList  .date{
+    border: #14B6DA 1.5px solid;
+    height: 32px;
+    border-radius: 2px;
+    
+}
+
+.RequestResponseList .list img{
+    position: absolute;
+    right: 1;
+    width: 20px;
+    height: 15px;
+    top: 10px;
+    margin-left: 10px;
+}
+.RequestResponseList .list ul{
+    width: 344px;
+    position: absolute;
+    background-color: #fff;
+border: #14B6DA solid 1px;
+margin-top: -4px;
+border-top: none;    
+border-bottom: none;  
+}
+.RequestResponseList .list ul li:hover{
+    background-color: #14B6DA;
+    cursor: pointer;
+}
+.RequestResponseList .list ul li{
+    padding: 10px;
+   border-bottom: 1px solid #14B6DA;
+   cursor: pointer;
+  text-align: end;
+}
+.RequestResponseList table {
+    width: 90%;
+    margin: 3rem auto 0;
+    text-align: center;
+    border-spacing: 0 0.5rem; /* Vertical spacing between rows */
+    border-collapse: separate;
+    direction: rtl;
+}
+
+.RequestResponseList table thead tr td {
+    font-size: 20px;
+}
+
+.RequestResponseList table tbody tr {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 0px 1px rgba(135, 135, 135, 1); 
+ 
+}
+
+.RequestResponseList table tbody tr td {
+    height: 4rem;
+    font-size: 18px;
+    padding: 10px; /* Optional: Adds padding inside the cells */
+}
+
+
+
+
+
+/* .circle {
+    width: 70px;            
+    height: 35px;            
+    background-color: red;    
+    border-top-left-radius: 100px;   
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: rotate(-90deg); 
+} */

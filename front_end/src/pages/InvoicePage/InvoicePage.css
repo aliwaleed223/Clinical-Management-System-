@@ -59,3 +59,12 @@
     .InvoicePage-container .table-container{height: 400px;}
     .InvoicePage-header{font-size: 50px;}
 }
+
+
+.row{
+    cursor: pointer;
+}
+
+.SelectClass{
+    background-color: #D3D3D3;
+}

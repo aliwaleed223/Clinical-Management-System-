@@ -213,8 +213,8 @@ const PrescriptionForm = () => {
         </div>
 
         {/* table */}
-        <table className="w-full mt-4 mb-4 border-collapse border-2 border-[#24cccc] rounded-lg overflow-hidden">
-          <thead>
+        <table className="w-full mt-4 mb-4 border-[2px] border-[#24cccc] rounded-lg">
+          <thead className="border-[1px] border-[#24cccc]">
             <tr>
               <th className="p-2">التعليمات</th>
               <th className="p-2">المدة</th>
@@ -224,10 +224,10 @@ const PrescriptionForm = () => {
               <th className="p-2">اسم الدواء</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="border-[1px] border-[#24cccc] userInfo">
             {formData.prescriptions.map((prescription, index) => (
-              <tr key={index}>
-                <td className="p-2">
+              <tr key={index} className="userInfo">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.instructions}
@@ -236,7 +236,7 @@ const PrescriptionForm = () => {
                     className="w-full p-2" // Removed border class
                   />
                 </td>
-                <td className="p-2">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.duration}
@@ -245,7 +245,7 @@ const PrescriptionForm = () => {
                     className="w-full p-2" // Removed border class
                   />
                 </td>
-                <td className="p-2">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.frequency}
@@ -254,7 +254,7 @@ const PrescriptionForm = () => {
                     className="w-full p-2" // Removed border class
                   />
                 </td>
-                <td className="p-2">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.form}
@@ -263,7 +263,7 @@ const PrescriptionForm = () => {
                     className="w-full p-2" // Removed border class
                   />
                 </td>
-                <td className="p-2">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.dose}
@@ -272,7 +272,7 @@ const PrescriptionForm = () => {
                     className="w-full p-2" // Removed border class
                   />
                 </td>
-                <td className="p-2">
+                <td className="p-2 userInfo">
                   <input
                     type="text"
                     value={prescription.medicineName}
@@ -285,9 +285,6 @@ const PrescriptionForm = () => {
             ))}
           </tbody>
         </table>
-
-
-
 
 
         <button type="button" onClick={addPrescription} className="bg-blue-500 text-white p-2 rounded-lg">
@@ -334,7 +331,6 @@ const InfoComponent = ({ infoText, children }) => {
     </div>
   )
 };
-
 
 
 export default PrescriptionForm;

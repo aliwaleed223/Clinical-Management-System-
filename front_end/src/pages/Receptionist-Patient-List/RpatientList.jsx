@@ -10,6 +10,7 @@ import axios from 'axios';
 import  {ClinicalContext}  from './../../pages/auth/contextFile';
 
 function RpatientList() {
+  
   const {token} =useContext(ClinicalContext)
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState({
@@ -21,7 +22,16 @@ function RpatientList() {
     followUp: false
   });
   const [allPatients, setAllPatients] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [slect, setSlect] = useState('');
+
+  /////////////////////////git all patient////////////////////////////////
   async function getAllpatient  (){
+    if (!token) {
+      console.error("No token found, redirecting to login.");
+      setLoading(false);
+      return;
+    }
    try{ const r=  await axios({
         method:"get",
         // data:"data",
@@ -48,11 +58,51 @@ function RpatientList() {
     }
 
   }
+  finally {
+    setLoading(false);
+    if(!allPatients){
+     
+    }  // Stop loading after the request
   }
+  }
+  /////////////////////////git all patient////////////////////////////////
+
+  /////////////////////////delete patient////////////////////////////////
+async function deletePatient(id) {
+  try {
+    await axios({
+      method: "delete",
+      url: `http://localhost:4000/api/patient/patients/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    
+    alert("تم حذف المريض بنجاح ");
+    // eslint-disable-next-line no-restricted-globals
+    location.reload()
+  } catch (error) {
+    if (error.response) {
+      console.error("Error response data:", error.response.data);
+    } else if (error.request) {
+      console.error("Error request:", error.request);
+    } else {
+      console.error("Error message:", error.message);
+    }
+  }
+}
+
+
+
+   /////////////////////////delete patient////////////////////////////////
   useEffect(() => {
     getAllpatient();
-  }, []);
-
+  }, [token]);
+  
+ 
+  useEffect(() => {
+    console.log('Patients updated:', allPatients); // This will log when allPatients changes
+  }, [allPatients]); 
   
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -61,23 +111,27 @@ function RpatientList() {
   const handleFilterChange = (e) => {
     setFilters({
       ...filters,
-      [e.target.name]: e.target.checked
+      [e.target.patientName]: e.target.checked
     });
   };
 
   const filteredPatients = allPatients.filter(patient => {
-    const matchesSearch = Object.values(patient).some(value =>
-      value.toString().toLowerCase().includes(search.toLowerCase())
-    );
-
+    // Ensure each patient property exists before calling toString()
+    const matchesSearch = Object.values(patient).some(value => {
+      if (value !== null && value !== undefined) {
+        return value.toString().toLowerCase().includes(search.toLowerCase());
+      }
+      return false;
+    });
+  
     const hasActiveFilter = Object.values(filters).some(Boolean);
-
+  
     const matchesFilter = (
       (!hasActiveFilter) ||
       (filters.subscribed && patient.status === 'مشترك') ||
       (filters.nonSubscribed && patient.status === 'بدون اشتراك')
     );
-
+  
     return matchesSearch && matchesFilter;
   });
   
@@ -87,6 +141,9 @@ function RpatientList() {
   }
 
 
+  if (loading) {
+    return <div style={{height:'300px', display: 'flex',justifyContent:'center',alignItems:'center',fontSize:'30px'} }><h1>Loading...</h1></div>;
+  }
 
   return (
     <div className="RPL-container">
@@ -96,7 +153,7 @@ function RpatientList() {
       </div>
       <div className='RPL-Edit'>
         <div>
-          <img src={trash} alt="Trash" />
+          <img src={trash} alt="Trash" style={{cursor:"pointer"}}  onClick={()=>{deletePatient(slect)}} />
           <Link to='/AddPatient' ><img src={AddPatient} alt="Add Patient" /></Link>
         </div>
         <div>
@@ -121,12 +178,12 @@ function RpatientList() {
         </div>
             <div className='table-body'>
               {filteredPatients.map((patient, index) => (
-                <div className='row' key={index}>
+                <div className={`row ${slect===patient._id ? "SelectClass" : ""}`}  key={index} onClick={()=>setSlect(patient._id)} >
                   <p>مشترك</p>
                   <p>{patient.phone}</p>
                   <p>{patient.diseaseType}</p>
                   <p>{patient.age}</p>
-                  <p>{patient.name}</p>
+                  <p>{patient.patientName}</p>
                 </div>
               ))}
             </div>

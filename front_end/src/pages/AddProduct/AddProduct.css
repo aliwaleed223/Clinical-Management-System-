@@ -1,0 +1,52 @@
+.store .lineOfinput {
+   
+}
+.store .lineOfinput .DivForInputs{
+    display: flex;
+    flex-direction: column;
+gap: 10px;
+width: 500px;
+}
+.store .lineOfinput .DivForInputs label{
+    text-align: end;
+    font-weight: bold;
+}
+.store .lineOfinput .DivForInputs  input{
+    width:100%;
+}
+.store .lineOfinput  textarea{
+    width: 100%;
+    direction: rtl;
+    height: 35px;
+    border: 2px solid rgba(20, 182, 218, 1);
+}
+.setNewMargin{
+    margin: 20px 0 !important;
+}
+.NewDivForInputs{
+    display: flex;
+   flex-direction: row;
+gap: 15px;
+
+}
+.NewDivForInputs div{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    width: 200px;
+}
+.NewDivForInputs button{
+    margin-top: 30px;
+    background-color: rgba(20, 182, 218, 1) !important;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   gap: 20%;
+    flex-direction: row;
+    direction: ltr;
+    color: rgba(255, 255, 255, 1) !important;
+}
+.NewDivForInputs button img {
+    width: 25px;
+    height: 25px;
+}

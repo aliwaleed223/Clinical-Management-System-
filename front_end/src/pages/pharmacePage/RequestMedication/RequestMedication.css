@@ -2,14 +2,25 @@
 .info .form2 div label {
     width: 120px;
 }
-.Name_of_the_medicine label{
-    margin: 20px 20px 0;
-    font-size: 22px;
-    display: inline-block; /* or block, depending on your layout */
-    width: 80px;
+.Name_of_the_medicine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.Name_of_the_medicine  ,.form2 {
+    margin: 2rem;
+display: flex;
+    direction: rtl;
+    
+}
+.Name_of_the_medicine label ,.form2 label{
+   
+    font-size: 18px;
+   margin-left: 2px;
 }
 
-.Name_of_the_medicine input
+.Name_of_the_medicine input,.form2 input
 {border: #14B6DA 1.5px solid;
 height: 32px;
 border-radius: 7px;

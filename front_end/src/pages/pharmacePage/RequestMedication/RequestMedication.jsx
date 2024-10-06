@@ -43,60 +43,68 @@ function DispensingMedication() {
 
 
   return (
-    <div className="DispensingMedication">
+    <div className="">
 
 
       <div className="info">
         <h1 className='pationtInfoHead'>
           طلب الدواء من المخزن
         </h1>
-        <form className='form form2' action="">
+        <form className='form2' action="">
           <div>
-
+          <label htmlFor="input" >اسم الصيدلاني</label>
             <input type="text" id='input' value={finalInfo.pharmaceName}
               onChange={(e) => handleInputChangeForfinalInfo(e, 'pharmaceName')} />
-            <label htmlFor="input" >اسم الصيدلاني</label>
           </div>
           <div>
-            <input type="text" id='input' value={finalInfo.history}
+          <label htmlFor="input">تاريخ الطلب  </label>
+            <input type="date" id='input' value={finalInfo.history}
               onChange={(e) => handleInputChangeForfinalInfo(e, 'history')} />
-            <label htmlFor="input">تاريخ الطلب  </label>
           </div>
-
-
-
         </form>
-
       </div>
       <div className='head'>
 
       </div>
       {medicines.map((medicine, index) => (
         <div className='Name_of_the_medicine' key={index}>
+       
+         
+          
+            <label htmlFor="">
+            اسم الدواء
+          </label>
+          <input
+            type="text"
+            value={medicine.name}
+            onChange={(e) => handleInputChange(e, index, 'name')}
+          />
+        <img
+            src={add}
+            alt="Add Medicine"
+            onClick={addMedicine}
+          />
+           <label  htmlFor="">
+            شكل الدواء
+          </label>
+          <input
+            type="text"
+            style={{ width: '100px' }}
+           
+            onChange={(e) => handleInputChange(e, index, 'quantity')}
+          />
+          <label  htmlFor="">
+            الكمية
+          </label>
           <input
             type="number"
             style={{ width: '100px' }}
             value={medicine.quantity}
             onChange={(e) => handleInputChange(e, index, 'quantity')}
           />
-          <label style={{ marginLeft: '0px' }} htmlFor="">
-            الكمية
-          </label>
-          <img
-            src={add}
-            alt="Add Medicine"
-            onClick={addMedicine}
 
-          />
-          <input
-            type="text"
-            value={medicine.name}
-            onChange={(e) => handleInputChange(e, index, 'name')}
-          />
-          <label htmlFor="">
-            اسم الدواء
-          </label>
         </div>
+        
       ))}
 
       <div className='AdditionalNotes'>

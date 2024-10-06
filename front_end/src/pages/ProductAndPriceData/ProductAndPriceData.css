@@ -1,0 +1,70 @@
+
+.ProductDetails{
+    width: 90%;
+    background-color: rgba(255, 255, 255, 1);
+    margin: auto;
+    margin-top: 20px;
+    /* height: 35vh; */
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid rgba(20, 182, 218, 1) ;
+    border-radius: 10px;
+}
+.ProductDetails h2{
+    direction: rtl;
+    /* margin: 5px 20px; */
+    padding: 5px 0;
+    font-size:26px ;
+    color: rgba(159, 159, 159, 1);
+    border-bottom: 5px solid rgba(20, 182, 218, 1);
+    border-image: linear-gradient(to right,
+    transparent 90%, /* Fully transparent until 90% */
+    rgba(20, 182, 218, 1) 90%, /* First color at 90% */
+    rgba(20, 182, 218, 1) 90.5%, /* Thin solid color */
+    transparent 90.5%, /* First gap starts */
+    transparent 91%, /* First gap ends (0.5%) */
+    rgba(20, 182, 218, 1) 91%, /* Second color */
+    rgba(20, 182, 218, 1) 91.5%, /* Thin solid color */
+    transparent 91.5%, /* Second gap starts */
+    transparent 92%, /* Second gap ends (0.5%) */
+    rgba(20, 182, 218, 1) 92%, /* Third color */
+    rgba(20, 182, 218, 1) 92.5%, /* Thin solid color */
+    transparent 92.5%, /* Third gap starts */
+    transparent 93%, /* Third gap ends (0.5%) */
+    rgba(20, 182, 218, 1) 93%, /* Fourth color */
+    rgba(20, 182, 218, 1) 93.5%, /* Thin solid color */
+   
+    rgba(20, 182, 218, 1) 93.5%, /* Fifth color */
+    rgba(20, 182, 218, 1) 100% /* Solid color until the end */
+  ) 1;
+}
+
+
+.ProductDetails table {
+    width: 100%;
+border: none;
+direction: rtl;
+}
+.ProductDetails table thead tr td{
+    color: rgba(159, 159, 159, 1);
+    font-size: 20px;
+}
+
+.ProductDetails table tr td{
+    border: none;
+    text-align: center;
+
+}
+.ProductDetails h3{
+    direction: rtl;
+    color: rgba(159, 159, 159, 1);
+    font-size: 23px;
+}
+
+.ProductDetails .description{
+    direction: rtl;
+    margin-right: 10px;
+    font-size: 20px;
+}
