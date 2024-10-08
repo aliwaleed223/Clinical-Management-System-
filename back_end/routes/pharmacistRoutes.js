@@ -4,25 +4,32 @@ import authController from '../controllers/authController.js';
 
 const router = express.Router();
 
-// protected middleware
+// Protected middleware
 router.use(authController.protected);
 
 // Send Drug Request
 router.post('/drugRequest', pharmacistController.requestDrugFromStorage);
 
-// Get all notification 
-router.get('/getNotifications', pharmacistController.requestedList);
-
-// respond To Drug request
+// Respond to Drug Request
 router.put('/respondToDrug/:requestId', pharmacistController.respondToDrugRequest);
 
-// get all drug
-router.get('/getAllDrug', pharmacistController.getAllDrugs);
+// Create a new drug response (consider renaming for consistency)
+router.post('/responses', pharmacistController.creatRes);
 
-// get all responses (قائمة استجابة الطلبات)
-router.get('/getAllResponses', pharmacistController.getAllResponses);
+// Fetch all drug responses
+router.get('/responses', pharmacistController.fetchRes);
 
-// استجابة طلب الصيدلية
-router.get('/getResponses/:id', pharmacistController.getResById);
+// get all drugList if Quantity > 0 
+router.get('/getDrugList', pharmacistController.getDrugList);
+
+// Filter prescriptions by name
+router.get('/filterByName', pharmacistController.filterByName); 
+
+// Dispensing medication 
+router.post('/despensingMedic', pharmacistController.dispensingMedication); 
+
+// get Dispensing medication
+router.get('/despensingMedic', pharmacistController.despensingDrug); 
+
 
 export default router;
