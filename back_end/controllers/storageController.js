@@ -12,6 +12,7 @@ const storageController = {
         category, 
         quantity,
         barcode,
+        productNumber,
         purchasePrice,
         sellingPrice,
         minimumSellingPrice,
@@ -38,6 +39,7 @@ const storageController = {
         description,
         category, 
         quantity,
+        productNumber,
         barcode,
         purchasePrice,
         sellingPrice,
@@ -110,7 +112,52 @@ const storageController = {
       console.error('Error deleting product:', error);
       res.status(400).send('Error deleting product');
     }
+  },
+
+  searchProducts : async (req, res)=>{
+      try {
+        const { nameOrCode, productType, outOfStock } = req.query;
+
+        // Building the query object
+        let query = {};
+
+        // Filter by name or code if provided
+        if (nameOrCode) {
+          query.$or = [
+              { productName: { $regex: nameOrCode, $options: 'i' } }, // Case-insensitive partial match for product name
+              { productNumber: nameOrCode } 
+          ];
+        }
+
+        // Filter by product type if provided
+        if (productType && productType !== 'All') {
+            query.category = productType;
+        }
+
+        // Filter by stock availability (outOfStock = true means quantity is 0)
+        if (outOfStock) {
+            query.quantity = outOfStock === 'نافذ' ? { $eq: 0 } : { $gt: 0 };
+        }
+
+        // Execute the query
+        const products = await Storage.find(query);
+
+        // Return the filtered products
+        res.status(200).json({
+            success: true,
+            count: products.length,
+            data: products,
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+
+
   }
+
+
+
+
 };
 
 export default storageController;

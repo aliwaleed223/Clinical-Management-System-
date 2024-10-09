@@ -26,6 +26,8 @@ const pharmacistController = {
     // Save the request to the requestedDrug collection
     await newRequest.save(); // Use the save method on the instance
 
+    req.app.get('io').emit('new-drugRequest', newRequest);
+
     // Send a response back to the pharmacist
     res.status(201).json({ message: 'تم إرسال الطلب بنجاح', request: newRequest });
   } catch (error) {
@@ -33,6 +35,20 @@ const pharmacistController = {
     res.status(400).json({ message: error.message });
   }
 },
+
+// requset list in storage
+reqListinstore: async (req, res) => {
+  try {
+  
+    const availableDrugs = await RequestedDrug.find({ });
+    res.status(200).json(availableDrugs);
+
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+
+},
+
 
   respondToDrugRequest: async (req, res) => {
   try {

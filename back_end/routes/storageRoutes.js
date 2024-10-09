@@ -21,4 +21,7 @@ router.put('/products/:id', storageController.updateProduct);
 // Delete a product by ID
 router.delete('/products/:id', storageController.deleteProduct);
 
+// filter and search 
+router.get('/search', storageController.searchProducts);
+
 export default router;
