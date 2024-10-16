@@ -7,6 +7,8 @@ import persRoutes from './routes/prescriptionRoutes.js';
 import storageRoutes from './routes/storageRoutes.js';
 import logsRoutes from './routes/logsRoutes.js';
 import pharmacistRoutes from './routes/pharmacistRoutes.js';
+import doctorRoutes from './routes/doctorRoutes.js';
+import cardRoutes from './routes/cardRoutes.js'
 
 const app = express();
 
@@ -43,6 +45,8 @@ app.use('/api/pers', persRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/logs', logsRoutes);
 app.use('/api/pharmacist', pharmacistRoutes);
+app.use('/api/doctor', doctorRoutes);
+app.use('/api/card', cardRoutes);
 
 // Default error handling middleware 
 app.use((req, res, next) => {

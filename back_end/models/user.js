@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true},
   password: { type: String, required: true },
+  isOnline: { type: Boolean, default: false },
   role: { type: String, required: true, enum: ['مستخدم', 'مدير' , 'طبيب', 'صيدلاني','موظف استقبال','أمين المخزن'], default: 'user' }
 });
 

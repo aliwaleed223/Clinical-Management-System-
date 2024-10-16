@@ -9,29 +9,31 @@ import MedicationDispensingList from '../models/MedicationDispensingList.js';
 const pharmacistController = {
   
   
-    requestDrugFromStorage: async (req, res) => {
+requestDrugFromStorage: async (req, res) => {
   try {
-    const { pharmacistName, drugName, quantity ,drugForm ,additionalNote } = req.body;
+    const { pharmacistName, medicines, additionalNote } = req.body;
+
+    // Ensure drugs is an array and contains valid objects
+    if (!Array.isArray(medicines) || medicines.length === 0) {
+      return res.status(400).json({ message: 'At least one drug must be included in the request' });
+    }
 
     const newRequest = new RequestedDrug({
       pharmacistName,
-      drugName,
-      quantity,
-      drugForm,
+      medicines,
       additionalNote,
-      status: 'pending', 
+      status: 'pending',
       requestDate: new Date(),
     });
 
-    // Save the request to the requestedDrug collection
-    await newRequest.save(); // Use the save method on the instance
+    await newRequest.save();
 
     req.app.get('io').emit('new-drugRequest', newRequest);
 
     // Send a response back to the pharmacist
     res.status(201).json({ message: 'تم إرسال الطلب بنجاح', request: newRequest });
   } catch (error) {
-    console.log(error); // Add this to see the full error in the console
+    console.log(error); // Log the error for debugging
     res.status(400).json({ message: error.message });
   }
 },

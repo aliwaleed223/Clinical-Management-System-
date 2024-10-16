@@ -30,5 +30,8 @@ router.delete('/deletUsers/:id',authController.deleteUser);
 // getMe Function
 router.get('/getMe' ,authController.getMe);
 
+// get getOnlineDoctors
+router.get('/getOnlineDoctors' ,authController.getOnlineDoctors);
+
 
 export default router;

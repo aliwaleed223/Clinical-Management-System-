@@ -25,6 +25,8 @@ registerUser: async (req, res) => {
     const user = new User({ username, password, role });
     await user.save();
 
+    await User.findOneAndUpdate({ username }, { isOnline: true });
+
     const token = jwt.sign({name: user.username, id: user._id, role: user.role }, secretKey, { expiresIn: '8h' });
     res.json({ token });
   } catch (error) {
@@ -34,22 +36,35 @@ registerUser: async (req, res) => {
 },
 
   // Login user and generate JWT
-  loginUser: async (req, res) => {
+loginUser: async (req, res) => {
     try {
-      const { username, password } = req.body;
-      const user = await User.findOne({ username });
-      if (!user) return res.status(401).send('Invalid username or password');
+        const { username, password } = req.body;
 
-      if (!bcrypt.compare(password, user.password)) 
-      return res.status(401).send('Invalid username or password');
+        // Find the user by username
+        const user = await User.findOne({ username });
+        if (!user) return res.status(401).send('Invalid username or password');
 
-      const token = jwt.sign({name: user.username, id: user._id, role: user.role }, secretKey, { expiresIn: '8h' });
-      res.json({ token });
+        // Compare the provided password with the stored password (use await)
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(401).send('Invalid username or password');
+
+        // Update isOnline status to true (using findOneAndUpdate)
+        await User.findOneAndUpdate({ username }, { isOnline: true });
+
+      
+        const token = jwt.sign(
+            { name: user.username, id: user._id, role: user.role },
+            secretKey,
+            { expiresIn: '8h' }
+        );
+
+        res.json({ token });
     } catch (error) {
-      console.log(error);
-      res.status(400).send('Error logging in');
+        console.log(error);
+        res.status(400).send('Error logging in');
     }
-  }, 
+},
+
 
   // logout the user 
 Logout: async (req, res) => {
@@ -72,7 +87,15 @@ Logout: async (req, res) => {
       token: accessToken,
     });
     await newBlacklist.save();
- 
+
+
+    const decoded = jwt.verify(accessToken, secretKey);  
+    const username = decoded.name;
+    
+    console.log(username);
+    await User.findOneAndUpdate({ username }, { isOnline: false });
+
+
     // note : the token should remove from local storge by the front end 
     // since local storage is managed entirely by the client's browser.
 
@@ -87,6 +110,19 @@ Logout: async (req, res) => {
   }
   res.end();
 },
+
+
+getOnlineDoctors : async (req, res) => {
+    try {
+        const onlineDoctors = await User.find({ isOnline: true ,role : "طبيب"});
+        res.status(200).json({ success: true, data: onlineDoctors });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+},
+
+
+
 //fetch all the users
  fetchAllUsers: async(req,res,next)=>{
   try {

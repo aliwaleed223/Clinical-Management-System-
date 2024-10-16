@@ -136,7 +136,7 @@ const storageController = {
 
         // Filter by stock availability (outOfStock = true means quantity is 0)
         if (outOfStock) {
-            query.quantity = outOfStock === 'نافذ' ? { $eq: 0 } : { $gt: 0 };
+            query.quantity = outOfStock === 'نافذ' ? { $eq: 0 } : { $lte: 10 };
         }
 
         // Execute the query
@@ -154,9 +154,6 @@ const storageController = {
 
 
   }
-
-
-
 
 };
 

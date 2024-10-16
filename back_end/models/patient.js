@@ -16,6 +16,15 @@ const PatientSchema = new Schema({
     //enum: ['Male', 'Female'],
     required: true,
   },
+  doctor: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User' 
+    }, 
+  status: {
+    type: String,
+    enum: ['waiting', 'entered'],
+    default: 'waiting',
+  },
   age: {
     type: Number,
     required: true,

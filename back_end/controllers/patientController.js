@@ -8,7 +8,6 @@ const patientController = {
   createPatient: async (req, res) => {
     try {
         const { patientName, age, phone, gender, address, registrationDate , idNumber, email, disease, diseaseType, notes ,state} = req.body;
-        const picturePath = req.file ? req.file.path : null;
 
         const newPatient = new Patient({
             patientName,
@@ -23,7 +22,6 @@ const patientController = {
             diseaseType,
             notes,
             state,
-            picture: picturePath
         });
 
         const savedPatient = await newPatient.save();

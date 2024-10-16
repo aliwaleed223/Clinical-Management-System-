@@ -40,6 +40,23 @@ const invController = {
     }
   },
 
+  readInvoiceByName: async (req, res) => {
+  try {
+    const { patientName } = req.params; // Extract patientName from the request parameters
+
+    // Find the invoice based on the patientName
+    const getInvoice = await Invoice.findOne({ patientName: patientName });
+
+    if (!getInvoice) {
+      return res.status(404).send({ message: 'Invoice not found' }); 
+    }
+
+    res.status(200).send(getInvoice);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+},
+
   // Update Invoice
   updateInvoice: async (req, res) => {
     try {

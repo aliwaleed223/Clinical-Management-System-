@@ -52,6 +52,23 @@ const prescriptionController = {
     }
   },
 
+  readPrescriptionByName: async (req, res) => {
+  try {
+    const { patientName } = req.params; // Extract patientName from the request parameters
+
+    // Find the prescription based on the patientName
+    const getPrescription = await Prescription.findOne({ patientName: patientName });
+
+    if (!getPrescription) {
+      return res.status(404).json({ message: 'Prescription not found' });
+    }
+
+    res.status(200).json(getPrescription);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+},
+
   // Update Prescription
   updatePrescription: async (req, res) => {
     try {

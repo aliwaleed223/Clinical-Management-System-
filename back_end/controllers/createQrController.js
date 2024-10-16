@@ -3,7 +3,7 @@ import QRCode from 'qrcode'
 //Create QR image 
 const createQr = async (req, res) => {
     try {
-    const url = `https://4000/patient/profile/${req.params.id}`;
+    const url = `https://5000/patient-profile/${req.params.id}`;
     const qrCodeImage = await QRCode.toDataURL(url);
     res.setHeader('Content-Type', 'image/png');
 

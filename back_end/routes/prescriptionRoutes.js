@@ -16,6 +16,9 @@ router.get('/prescriptions', prescriptionController.readAll);
 // Read a prescription by ID
 router.get('/prescriptions/:id', prescriptionController.readPrescription);
 
+// Read a prescription by Name
+router.get('/readPrescriptionByName/:patientName', prescriptionController.readPrescriptionByName);
+
 // Update a prescription by ID
 router.put('/prescriptions/:id', prescriptionController.updatePrescription);
 

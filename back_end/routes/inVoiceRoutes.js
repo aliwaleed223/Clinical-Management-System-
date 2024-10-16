@@ -16,6 +16,9 @@ router.get('/allInvoices', invController.readAll)
 // Fetch Single Invoice
 router.get('/fetchInvoice/:id', invController.readInvoice) 
 
+// Fetch Single Invoice By Name
+router.get('/fetchInvoiceByName/:patientName', invController.readInvoiceByName) 
+
 // Update Invoice
 router.put('/invoice/:id', invController.updateInvoice) 
 
