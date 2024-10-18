@@ -68,7 +68,6 @@ getRequestedDrugById: async (req, res) => {
 },
 
 
-
 respondToDrugRequest: async (req, res) => {
   try {
     const { requestId } = req.params;
@@ -87,7 +86,7 @@ respondToDrugRequest: async (req, res) => {
       drugName,
       drugForm,
       quantityRequested,
-      notes,
+      notes, 
       storageManagerName,
       storageStatus,
       availableQuantity,

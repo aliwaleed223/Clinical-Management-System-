@@ -45,9 +45,9 @@ const invController = {
     const { patientName } = req.params; // Extract patientName from the request parameters
 
     // Find the invoice based on the patientName
-    const getInvoice = await Invoice.findOne({ patientName: patientName });
+    const getInvoice = await Invoice.find({ patientName: patientName.trim() });
 
-    if (!getInvoice) {
+    if (getInvoice.length==0) {
       return res.status(404).send({ message: 'Invoice not found' }); 
     }
 
