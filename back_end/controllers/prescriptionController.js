@@ -52,15 +52,17 @@ const prescriptionController = {
     }
   },
 
+
+  // get prescription by name 
   readPrescriptionByName: async (req, res) => {
   try {
-    const { patientName } = req.params; // Extract patientName from the request parameters
+    const { patientName } = req.params;
 
-    // Find the prescription based on the patientName
-    const getPrescription = await Prescription.findOne({ patientName: patientName });
+    // Find the prescriptions based on the patientName
+    const getPrescription = await Prescription.find({ patientName: patientName.trim()});
 
-    if (!getPrescription) {
-      return res.status(404).json({ message: 'Prescription not found' });
+    if (getPrescription.length === 0) {
+      return res.status(404).json({ message: 'No prescriptions found for this patient' });
     }
 
     res.status(200).json(getPrescription);
