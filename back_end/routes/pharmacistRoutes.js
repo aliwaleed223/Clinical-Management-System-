@@ -34,5 +34,8 @@ router.get('/despensingMedic', pharmacistController.despensingDrug);
 // req list in storage
 router.get('/reqList', pharmacistController.reqListinstore); 
 
+// get requested drug by 
+router.get('/getRequestedDrugById/:id', pharmacistController.getRequestedDrugById); 
+
 
 export default router;

@@ -2,13 +2,13 @@ import fs from 'fs';
 import QRCode from 'qrcode';
 import Patient from '../models/patient.js';
 
-// Save patient card data, handle image upload, generate QR code, and respond with QR image
+
 export const saveCardData = async (req, res) => {
   try {
-    const { name } = req.body;
-
-    // Check if the patient exists
-    const patient = await Patient.findOne({ patientName: name });
+    
+    const { patientName } = req.body;
+    
+    const patient = await Patient.findOne({ patientName });  
     if (!patient) {
       return res.status(404).json({ message: 'Patient not found' });
     }

@@ -7,13 +7,19 @@ const patientController = {
   // Create a new patient
   createPatient: async (req, res) => {
     try {
-        const { patientName, age, phone, gender, address, registrationDate , idNumber, email, disease, diseaseType, notes ,state} = req.body;
+        const { patientName, age, phone, gender, address, registrationDate, idNumber, email, disease, diseaseType, notes, state, doctor } = req.body;
+
+        // Check if a patient with the same email already exists
+        const existingPatient = await Patient.findOne({ email });
+        if (existingPatient) {
+            return res.status(400).json({ message: 'Patient with this email already exists' });
+        }
 
         const newPatient = new Patient({
             patientName,
             age,
             phone,
-            registrationDate,
+            registrationDate: registrationDate || new Date(), 
             idNumber,
             gender,
             address,
@@ -22,16 +28,24 @@ const patientController = {
             diseaseType,
             notes,
             state,
+            doctor, 
         });
 
         const savedPatient = await newPatient.save();
-        await logController.saveInLogs(req, savedPatient._id , Patient , 'أضافة مريض');
+
+        // Save to logs
+        await logController.saveInLogs(req, savedPatient._id, Patient, 'أضافة مريض');
+
+        // Return the saved patient
         res.status(201).json(savedPatient);
+
     } catch (error) {
+        if (error.code === 11000) { // Handle unique constraint error for email
+            return res.status(400).json({ message: 'Email already in use' });
+        }
         res.status(500).json({ message: 'Error creating patient', error });
     }
-
-  },
+},
 
   // Read all patients
   readAllPatients: async (req, res) => {

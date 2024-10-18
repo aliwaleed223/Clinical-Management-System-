@@ -51,8 +51,25 @@ reqListinstore: async (req, res) => {
 
 },
 
+// Get one requested drug by ID
+getRequestedDrugById: async (req, res) => {
+  try {
+    const requestedDrug = await RequestedDrug.findById(req.params.id);
 
-  respondToDrugRequest: async (req, res) => {
+    if (!requestedDrug) {
+      return res.status(404).json({ message: "Requested drug not found" });
+    }
+
+    res.status(200).json(requestedDrug);
+
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+},
+
+
+
+respondToDrugRequest: async (req, res) => {
   try {
     const { requestId } = req.params;
     

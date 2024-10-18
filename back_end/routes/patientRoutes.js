@@ -8,14 +8,13 @@ const router = express.Router();
 router.use(authController.protected);
 
   
-// POST route to handle image upload and patient creation
 router.post('/patients', patientController.createPatient);
 
 // Get the Qr image 
 router.get('/generateQR/:id', createQr);
 
 // Read all patients
-router.get('/patients', patientController.readAllPatients);
+router.get('/patients',patientController.readAllPatients);
 
 // Read a patient by ID
 router.get('/patients/:id', patientController.readPatientById);
