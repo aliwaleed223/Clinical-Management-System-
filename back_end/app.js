@@ -8,7 +8,8 @@ import storageRoutes from './routes/storageRoutes.js';
 import logsRoutes from './routes/logsRoutes.js';
 import pharmacistRoutes from './routes/pharmacistRoutes.js';
 import doctorRoutes from './routes/doctorRoutes.js';
-import cardRoutes from './routes/cardRoutes.js'
+import cardRoutes from './routes/cardRoutes.js';
+import statisticsRoute from './routes/statisticsRoute.js';
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use('/api/logs', logsRoutes);
 app.use('/api/pharmacist', pharmacistRoutes);
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/card', cardRoutes);
+app.use('/api/statistics', statisticsRoute);
 
 // Default error handling middleware 
 app.use((req, res, next) => {
