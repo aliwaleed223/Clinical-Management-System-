@@ -70,74 +70,77 @@ getRequestedDrugById: async (req, res) => {
 
 respondToDrugRequest: async (req, res) => {
   try {
-    const { requestId } = req.params;
-    
-    // Update the request status in the requestedDrug collection
-    const deletedRequest = await RequestedDrug.findByIdAndDelete(requestId);
+      const { requestId } = req.params;
+      
+      // Update the request status in the requestedDrug collection
+      const deletedRequest = await RequestedDrug.findByIdAndDelete(requestId);
 
-    if (!deletedRequest) {
-      return res.status(404).json({ message: 'Request not found' });
-    }
+      if (!deletedRequest) {
+        return res.status(404).json({ message: 'Request not found' });
+      }
 
-    // Extract data from the request body
-    const {
-      pharmacistName,
-      requestDate,
-      drugName,
-      drugForm,
-      quantityRequested,
-      notes, 
-      storageManagerName,
-      storageStatus,
-      availableQuantity,
-      expirationDate,
-      responseDate,
-      additionalNotes
-    } = req.body;
-
-    const newDrug = new DrugList({
-      drugName,
-      quantity:availableQuantity,
-      drugForm,
-      expirationDate
-    });
-
-  
-    await newDrug.save();
-
-
-    // Create a new request
-    const newRequest = new resToReq({
-      pharmacistName,
-      requestDate,
-      drugName,
-      drugForm,
-      quantityRequested,
-      notes,
-      storageResponse: {
+      // Extract data from the request body
+      const {
+        pharmacistName,
+        requestDate,
+        drugs, // This will be an array of drug objects
+        quantityRequested,
+        notes, 
         storageManagerName,
         storageStatus,
-        availableQuantity,
-        expirationDate,
         responseDate,
         additionalNotes
+      } = req.body;
+
+      // Ensure the drugs array exists
+      if (!Array.isArray(drugs) || drugs.length === 0) {
+        return res.status(400).json({ message: 'Drugs array is required' });
       }
-    });
 
-    // Save the new request entry
-    await newRequest.save();
+      // Save each drug to the DrugList collection
+      const drugEntries = [];
+      for (const drug of drugs) {
+        const { drugName, drugForm, availableQuantity, expirationDate } = drug;
 
-    // Emit the new response after both operations are successful
-    req.app.get('io').emit('new-response', newRequest);
+        const newDrug = new DrugList({
+          drugName,
+          quantity: availableQuantity,
+          drugForm,
+          expirationDate
+        });
 
-    // Send the response back to the client
-    res.status(201).json({ data: newRequest });
+        await newDrug.save(); // Save each drug individually
+        drugEntries.push(newDrug); // Store the saved drug in an array
+      }
 
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
+      // Save the response to pharmicy request 
+      const newRequest = new resToReq({
+        pharmacistName,
+        requestDate,
+        drugs, // Save the array of drugs
+        quantityRequested,
+        notes,
+        storageManagerName,
+        storageStatus,
+        responseDate,
+        additionalNotes
+      });
+
+      // Save the new request entry
+      await newRequest.save();
+
+      // Emit the new response after both operations are successful
+      req.app.get('io').emit('new-response', newRequest);
+
+      // Send the response back to the client
+      res.status(201).json({ data: newRequest });
+
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  
 },
-
+// قائمة استجابة الطلبات 
 fetchRes: async (req, res) => {
     try {
         const drugs = await resToReq.find();
@@ -145,6 +148,32 @@ fetchRes: async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
+},
+
+
+// conformation the recepit 
+confirmReceipt: async (req, res)=> {
+try {
+    const requestId = req.params.id;
+    const { confirmingPharmacistName } = req.body;
+
+    const updatedRequest = await resToReq.findByIdAndUpdate(
+      requestId,
+      { confirmationStatus: true ,
+        confirmingPharmacistName: confirmingPharmacistName,
+      },
+      { new: true }
+    );
+
+    if (!updatedRequest) {
+      return res.status(404).json({ message: 'Request not found' });
+    }
+
+    res.status(200).json({ message: 'Receipt confirmed', data: updatedRequest });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 },
 
 // قائمة الادوية

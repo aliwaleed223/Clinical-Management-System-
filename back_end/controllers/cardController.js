@@ -2,12 +2,11 @@ import fs from 'fs';
 import QRCode from 'qrcode';
 import Patient from '../models/patient.js';
 
-
 export const saveCardData = async (req, res) => {
   try {
-    
     const { patientName } = req.body;
     
+    // Find the patient in the database by name
     const patient = await Patient.findOne({ patientName });  
     if (!patient) {
       return res.status(404).json({ message: 'Patient not found' });
@@ -28,15 +27,18 @@ export const saveCardData = async (req, res) => {
     const patientId = patient._id;
     const profileUrl = `http://localhost:5000/patient-profile/${patientId}`;
 
-    // Generate QR code as a data URL and send it as a PNG image
+    // Generate QR code as a data URL (base64)
     const qrCodeImage = await QRCode.toDataURL(profileUrl);
-    
-    // Extract base64 part and convert it to Buffer
-    const img = Buffer.from(qrCodeImage.split(",")[1], 'base64');
 
-    // Set the response headers to send the image
-    res.setHeader('Content-Type', 'image/png');
-    return res.send(img);
+    // Respond with patient details and the QR code in base64 format
+    return res.status(200).json({
+      message: 'Patient data and QR code generated successfully',
+      patient: {
+        id: patientId,
+        name: patient.patientName,  // Ensure this field matches your schema
+        qrCodeImage: qrCodeImage    // Send the base64-encoded QR code
+      }
+    });
 
   } catch (error) {
     console.error('Internal server error:', error);

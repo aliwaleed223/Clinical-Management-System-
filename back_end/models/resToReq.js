@@ -14,7 +14,8 @@ const pharmacyRequestSchema = new mongoose.Schema({
     availableQuantity: { type: Number }, 
     expirationDate: { type: String }
   }],
-  
+  confirmationStatus: { type: Boolean, default: false }, 
+   confirmingPharmacistName: { type: String, default: null },
   responseDate: { type: String, required: true }, 
   additionalNotes: { type: String }
 }, { timestamps: true });

@@ -37,5 +37,8 @@ router.get('/reqList', pharmacistController.reqListinstore);
 // get requested drug by 
 router.get('/getRequestedDrugById/:id', pharmacistController.getRequestedDrugById); 
 
+// conformation the recipt 
+router.post('/confirmReceipt/:id', pharmacistController.confirmReceipt); 
+
 
 export default router;
