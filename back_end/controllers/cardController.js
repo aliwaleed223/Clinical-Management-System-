@@ -34,7 +34,9 @@ export const saveCardData = async (req, res) => {
     return res.status(200).json({
       message: 'Patient data and QR code generated successfully',
       patient: {
-        id: patientId,
+        idNumber: patient.idNumber,
+        gender:patient.gender ,
+        age : patient.age ,
         name: patient.patientName,  // Ensure this field matches your schema
         qrCodeImage: qrCodeImage    // Send the base64-encoded QR code
       }

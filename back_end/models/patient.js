@@ -14,8 +14,7 @@ const PatientSchema = new Schema({
   gender: {
     type: String,
     //enum: ['Male', 'Female'],
-    required: true,
-  },
+   },
   doctor: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User' 
@@ -27,32 +26,25 @@ const PatientSchema = new Schema({
   },
   age: {
     type: Number,
-    required: true,
-  },
+   },
   phone: {
     type: String,
     required: true,
   },
   registrationDate: {
     type: Date,
-    required: true,
-  },
+   },
   idNumber: {
     type: String,
-    required: false,
-  },
+   },
   email: {
     type: String,
-    required: true,
-    unique: true,
   },
   address: {
     type: String,
-    required: true,
   },
   diseaseType: {
     type: String,
-    required: true,
   },
   disease: {
     type: String,
@@ -62,7 +54,6 @@ const PatientSchema = new Schema({
   },
   picture: {
         type: String,
-        required: false 
     }  
 });
 
