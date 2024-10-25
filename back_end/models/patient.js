@@ -7,6 +7,9 @@ const PatientSchema = new Schema({
     type: String,
     required: true,
   },
+  motherName: {
+    type: String,
+  },
   state : {
    type : String,
    required : false
@@ -29,7 +32,6 @@ const PatientSchema = new Schema({
    },
   phone: {
     type: String,
-    required: true,
   },
   registrationDate: {
     type: Date,

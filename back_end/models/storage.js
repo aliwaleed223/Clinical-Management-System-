@@ -13,6 +13,9 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  expireDate: {
+    type: Date,
+  },
   category: {
     type: String,
     required: true,

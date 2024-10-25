@@ -29,6 +29,9 @@ const PrescriptionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  dose: {
+    type: String,
+  },
   doctorName: {
     type: String,
     required: true

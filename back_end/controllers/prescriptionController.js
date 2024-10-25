@@ -37,7 +37,7 @@ const prescriptionController = {
   // Read All Prescriptions
   readAll: async (req, res) => {
     try {
-      const allPrescriptions = await Prescription.find({});
+      const allPrescriptions = await Prescription.find({}).sort({ createdAt: -1 }); 
       res.status(200).json(allPrescriptions);
     } catch (error) {
       res.status(400).json({ message: error.message });
