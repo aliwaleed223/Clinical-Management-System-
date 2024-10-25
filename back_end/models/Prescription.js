@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Counter from './Counter.js'; // Adjust the path as necessary
 
 const PrescriptionSchema = new mongoose.Schema({
   prescriptionNumber: {
@@ -56,19 +55,6 @@ const PrescriptionSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Middleware to auto-increment prescriptionNumber
-PrescriptionSchema.pre('save', async function (next) {
-  if (this.isNew) {
-    const counter = await Counter.findOneAndUpdate(
-      {},
-      { $inc: { sequenceValue: 1 } },
-      { new: true, upsert: true }
-    );
-
-    this.prescriptionNumber = counter.sequenceValue;
-  }
-  next();
-});
 
 const Prescription = mongoose.model('Prescription', PrescriptionSchema);
 

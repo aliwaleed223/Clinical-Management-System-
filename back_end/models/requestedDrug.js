@@ -24,6 +24,11 @@ const requestedDrugSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
+  serialNumber: {
+    type: Number
+  },
+
   additionalNote: {
     type: String,
   },

@@ -4,13 +4,15 @@ import Response from '../models/responseModel.js';
 import DrugList from '../models/drugList.js';
 import Prescription from '../models/Prescription.js';
 import MedicationDispensingList from '../models/MedicationDispensingList.js';
+import getNextSequenceValue from '../models/Counter.js';
 
+ 
 
 const pharmacistController = {
   
   
 requestDrugFromStorage: async (req, res) => {
-  try {
+try {
     const { pharmacistName, medicines, additionalNote } = req.body;
 
     // Ensure drugs is an array and contains valid objects
@@ -18,12 +20,17 @@ requestDrugFromStorage: async (req, res) => {
       return res.status(400).json({ message: 'At least one drug must be included in the request' });
     }
 
+    // Get the next serial number for 'drugRequest'
+    const serialNumber = await getNextSequenceValue('drugRequest');
+
+    // Create a new request with the unique serial number
     const newRequest = new RequestedDrug({
       pharmacistName,
       medicines,
       additionalNote,
       status: 'pending',
       requestDate: new Date(),
+      serialNumber,  // Assign the serial number from the Counter collection
     });
 
     await newRequest.save();
@@ -36,6 +43,7 @@ requestDrugFromStorage: async (req, res) => {
     console.log(error); // Log the error for debugging
     res.status(400).json({ message: error.message });
   }
+
 },
 
 // requset list in storage

@@ -1,11 +1,15 @@
 import Prescription from '../models/Prescription.js';
 import logController from './logsController.js';
+import getNextSequenceValue from '../models/Counter.js';
 
 const prescriptionController = {
+
 
   // Create Prescription
   createPrescription: async (req, res) => {
     try {
+      const serialNumber = await getNextSequenceValue('prescription');
+
       const newPrescription = new Prescription({
         
         patientName: req.body.patientName,
@@ -17,7 +21,8 @@ const prescriptionController = {
         doctorName: req.body.doctorName,
         procedureCost: req.body.procedureCost,
         prescriptions: req.body.prescriptions,
-        additionalNotes: req.body.additionalNotes
+        additionalNotes: req.body.additionalNotes,
+        prescriptionNumber : serialNumber
       });
       await newPrescription.save();
       res.status(201).json(newPrescription);
