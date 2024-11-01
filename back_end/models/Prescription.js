@@ -11,35 +11,28 @@ const PrescriptionSchema = new mongoose.Schema({
   },
   patientAge: {
     type: Number,
-    required: true
-  },
+   },
   patientGender: {
     type: String,
-    required: true
-  },
+   },
   medicalProcedure: {
     type: String,
-    required: true
-  },
+   },
   reviewDate: {
     type: Date,
-    required: true
-  },
+   },
   diagnosis: {
     type: String,
-    required: true
-  },
+   },
   dose: {
     type: String,
   },
   doctorName: {
     type: String,
-    required: true
-  },
+   },
   procedureCost: {
     type: Number,
-    required: true
-  },
+   },
   prescriptions: [
     {
       medicineName: { type: String, required: true },

@@ -7,53 +7,43 @@ const productSchema = new mongoose.Schema({
   },
   purchaseDate: {
     type: Date,
-    required: true,
-  },
+   },
   description: {
     type: String,
-    required: true,
-  },
+   },
   expireDate: {
     type: Date,
   },
   category: {
     type: String,
-    required: true,
-  },
+   },
   quantity: {
     type: Number,
-    required: true,
-  },
+   },
   productNumber: {
     type: String,
     unique: true,
-    required: true,
-  },
+   },
   barcode: {
     type: String,
     required: false,
   },
   purchasePrice: {
     type: Number,
-    required: true,
-  },
+   },
   sellingPrice: {
     type: Number,
-    required: true,
-  },
+   },
   minimumSellingPrice: {
     type: Number,
-    required: true,
-  },
+   },
   discount: {
     type: Number,
-    required: true,
-  },
+   },
   discountType: {
     type: String,
     enum: ['percentage', 'fixed'],
-    required: true,
-  },
+   },
   finalPrice: {
     type: Number,
     required: false,

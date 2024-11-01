@@ -18,7 +18,10 @@ const requestedDrugSchema = new mongoose.Schema({
       drugForm: {
         type: String,
       },
-    }
+      dose: {
+        type: String,
+      },
+    },
   ],
   requestDate: {
     type: Date,
@@ -26,7 +29,7 @@ const requestedDrugSchema = new mongoose.Schema({
   },
 
   serialNumber: {
-    type: Number
+    type: Number,
   },
 
   additionalNote: {
@@ -34,10 +37,9 @@ const requestedDrugSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'approved', 'rejected'],
-    default: 'pending',
+    enum: ["pending", "approved", "rejected"],
+    default: "pending",
   },
-
 });
 
 const RequestedDrug = mongoose.model('RequestedDrug', requestedDrugSchema);
