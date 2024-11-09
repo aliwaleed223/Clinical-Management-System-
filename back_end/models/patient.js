@@ -1,44 +1,45 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
 const PatientSchema = new Schema({
   patientName: {
     type: String,
+    trim: true,
     required: true,
   },
   motherName: {
     type: String,
   },
-  state : {
-   type : String,
-   required : false
+  state: {
+    type: String,
+    required: false,
   },
   gender: {
     type: String,
     //enum: ['Male', 'Female'],
-   },
-  doctor: { 
+  },
+  doctor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User' 
-    }, 
+    ref: "User",
+  },
   status: {
     type: String,
-    enum: ['waiting', 'entered'],
-    default: 'waiting',
+    enum: ["waiting", "entered"],
+    default: "waiting",
   },
   age: {
     type: Number,
-   },
+  },
   phone: {
     type: String,
   },
   registrationDate: {
     type: Date,
-   },
+  },
   idNumber: {
     type: String,
-   },
+  },
   email: {
     type: String,
   },
@@ -55,9 +56,9 @@ const PatientSchema = new Schema({
     type: String,
   },
   picture: {
-        type: String,
-    }  
+    type: String,
+  },
 });
 
-const Patient = mongoose.model('Patient', PatientSchema);
+const Patient = mongoose.model("Patient", PatientSchema);
 export default Patient;

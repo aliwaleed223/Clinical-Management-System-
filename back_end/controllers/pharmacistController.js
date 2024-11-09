@@ -226,18 +226,12 @@ const pharmacistController = {
       // Find the drug by name (case-insensitive)
       const drug = await DrugList.findOne({
         drugName: { $regex: new RegExp("^" + drugName + "$", "i") },
-       // drugForm: { $regex: new RegExp("^" + drugForm + "$", "i") },
+        quantity: { $gte: quantity },
+        // drugForm: { $regex: new RegExp("^" + drugForm + "$", "i") },
       });
       // Check if the drug exists
       if (!drug) {
         return res.status(404).json({ message: "Drug not found" });
-      }
-
-      // Check if there is enough quantity to reduce
-      if (drug.quantity < quantity) {
-        return res
-          .status(400)
-          .json({ message: "Not enough quantity available" });
       }
 
       // Decrease the quantity
